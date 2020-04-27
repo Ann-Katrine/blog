@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="f19bc2c2-c87a-44ca-b18e-353def504f3b" name="ak site" url="https://ak.sebathefox.dk">
+        <fileTransfer host="ak.sebathefox.dk" port="21" rootFolder="/home/sebathefox/domains/ak.sebathefox.dk/public_html">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+          <option name="port" value="21" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
