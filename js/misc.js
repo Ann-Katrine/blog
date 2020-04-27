@@ -6,9 +6,11 @@ function validateField(fieldText, fieldalert, pattern) {
         return true;
     }
     fieldalert.style.display = "block";
+    return false;
 }
 
-document.getElementById("password").addEventListener("keypress", ev => {
+document.getElementById("password").addEventListener("change", ev => {
+    console.log("Davs");
     validateField(document.getElementById("password").value,
         document.getElementById("password-alert"), PASSWORDREGEX);
 });
