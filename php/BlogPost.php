@@ -1,13 +1,13 @@
 <?php 
-	class blog{
-		private $IdBlogPost
+	class blogpost{
+		private $IdBlogPost;
 		private $Tekst;
 		private $Sted;
 		private $Title;
-		private Dato;
+		private $Dato;
 		
-		function __construct($IdBlogPost, $Tekst, $Sted, $Title, Dato){
-			$this->idBlogPost = $IdBolgPost;
+		function __construct($IdBlogPost, $Tekst, $Sted, $Title, $Dato){
+			$this->idBlogPost = $IdBlogPost;
 			$this->tekst = $Tekst;
 			$this->sted = $Sted;
 			$this->title = $Title;
@@ -16,12 +16,12 @@
 		
 		public function jsonSerialize(){
 			return[
-				"idBolgPost" => $this->idBolgPost,
+				"idBlogPost" => $this->idBlogPost,
 				"tekst" => $this->tekst,
 				"sted" => $this->sted,
 				"title" => $this->title,
 				"dato" => $this->dato
-			];
+			]; 
 		}
 	}
 ?>

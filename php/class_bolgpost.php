@@ -5,15 +5,15 @@
 	class blogPosts{
 		public function getAllPosts(){
 			$post = array();
-			$this->DB = new DB();
+			$DB = new DB();
 			
 			$sql = "SELECT * FROM BlogPost";
 			
-			$result = $this->DB->conn->query($sql);
+			$result = $DB->conn->query($sql);
 			
 			while($row = $result->fetch_object()){
-				$post[] = new post($row->Title, $row->Dato, $row->Sted,$row->Tekst);
-			}
+				$post[] = new blogpost($row->idBlogPost, $row->tekst, $row->title, $row->sted,$row->dato);
+			} 
 			return $post;
 		}
 	}
