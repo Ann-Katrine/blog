@@ -4,7 +4,7 @@
 		private $Tekst;
 		private $Sted;
 		private $Title;
-		private $Dato;
+		private $Dato; 
 		
 		function __construct($IdBlogPost, $Tekst, $Sted, $Title, $Dato){
 			$this->idBlogPost = $IdBlogPost;
