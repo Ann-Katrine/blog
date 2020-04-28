@@ -5,12 +5,15 @@ function validateField(fieldText, fieldalert, pattern) {
         fieldalert.style.display = "none";
         return true;
     }
-    fieldalert.style.display = "block";
+    else
+        fieldalert.style.display = "block";
+
     return false;
 }
 
-document.getElementById("password").addEventListener("change", ev => {
-    console.log("Davs");
-    validateField(document.getElementById("password").value,
-        document.getElementById("password-alert"), PASSWORDREGEX);
-});
+window.onload = function() {
+    document.getElementById("password").oninput = function() {
+        validateField(document.getElementById("password").value,
+            document.getElementById("password-alert"), PASSWORDREGEX);
+    };
+};
