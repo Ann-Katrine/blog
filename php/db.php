@@ -18,7 +18,7 @@
 			}
 			// hvis der er forbindelse til databasen
 			else{
-				echo 'forbindelse virker'; 
+				//echo 'forbindelse virker'; 
 				$this->conn->set_charset('UTF8');
 			}
 		}
