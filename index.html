@@ -7,21 +7,31 @@
 </head>
 <body>
 
-<div class="banner-top">
+<header class="banner-top">
     <img src="images/banner.jpg" alt="Header banner">
-</div>
+</header>
 
-<div class="navbar">
-    <p class="button">YEEEEEEEEEEEEEEEET</p>
-</div>
+<nav class="navbar">
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="follow.html">Følg Mig!</a><li>
+    </ul>
+
+</nav>
 
 <div class="content container no-wrap">
-    <div class="col-1 pr-1" style="background-color: #80002b;">
-        TODO: Få denne del af siden til at forsvinde når skærmen bliver mindre!
+    <div class="col-1 pr-1">
     </div>
-    <div class="col-5 mr-1 ml-1 pl-1 pr-1" style="background-color: aqua;">
+    <div class="col-5 mr-1 ml-1 pl-1 pr-1" id="posts">
         <div class="post">
-            <h2>Indlæg</h2>
+            <h1>Indlæg</h1>
+            <small>
+                <a>TAG 1</a>
+                <a>TAG 2</a>
+                <a>TAG 3</a>
+                <a>TAG 4</a>
+                <a>TAG 5</a>
+            </small>
             <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi lobortis leo eget magna malesuada fermentum. Praesent id orci eu magna sodales convallis. Nulla vitae consectetur nibh. Interdum et malesuada fames ac ante ipsum primis in faucibus. Phasellus bibendum elit a turpis tempus, eget rutrum erat facilisis. Curabitur fermentum congue ex, vel efficitur lorem. Phasellus quis ex eros. Nunc eget sapien sit amet sapien dictum cursus. Curabitur vestibulum libero non risus hendrerit, in imperdiet massa pretium. Sed non varius nulla. Sed bibendum felis sit amet accumsan dictum. Fusce pulvinar diam vel magna placerat tempor. Pellentesque eu risus non justo lacinia tincidunt sit amet a mauris.
 
@@ -42,8 +52,11 @@
     </div>
 </div>
 
+<div id="print"></div>
+
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
 <script src="/js/uploud_posts.js"></script>
+<script src="/js/main.js"></script>
 </body>
 </html>
