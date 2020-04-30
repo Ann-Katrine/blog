@@ -1,4 +1,4 @@
-axios.get('/php/hent_posts.php', {params: {posts: 'getallpost'}})
+axios.get('/php/posts')
     .then(function (response) {
         console.log(response.data);
 		let data = response.data;

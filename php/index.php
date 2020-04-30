@@ -1,4 +1,5 @@
-<?php 
+<?php
+	include('class_bolgpost.php');
 	include('Route.php');
 
 	// Add base route (startpage)
@@ -15,7 +16,7 @@
 	Route::add('/contact-form', function(){
 		echo '<form method="post"><input type="text" name="test" /><input type="submit" value="send" /></form>';
 	},'get');
-	
+
 	// Post route example
 	Route::add('/contact-form', function(){
 		echo 'Hey! The form has been sent:<br/>';
@@ -27,5 +28,12 @@
 		echo $var1. ' is a great number!';
 	});
 
-	Route::run('/');
+	Route::add('/posts', function(){
+		$blogPosts = new blogPosts();
+
+		$result = $blogPosts->getAllPosts();
+		echo json_encode($result);
+	}, "get");
+
+	Route::run('/php');
 ?>
