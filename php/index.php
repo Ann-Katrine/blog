@@ -28,12 +28,12 @@
 		echo $var1. ' is a great number!';
 	});
 
-	Route::add('/host/', function{
+	Route::add('/host/', function(){
 		$blogPosts = new blogPosts();
 
 		$result = $blogPosts->getAllPosts();
 		echo json_encode($result);
-	})
+	});
 
 	Route::run('/');
 ?>
