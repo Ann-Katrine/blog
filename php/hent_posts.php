@@ -9,28 +9,20 @@
 
 	switch($method){
 		case 'GET':
+			if(!isset($_GET["posts"])){
+				exit(1);	
+			}
+
+			switch($_GET["posts"]){
+				case 'getallpost':
+					$blogPosts = new blogPosts();
+
+					$result = $blogPosts->getAllPosts();
+					echo json_encode($result);  
+					break;
+			}
 			break;
 		case 'POST':
 			break;
 	}
-		
-		
-	if(!isset($_GET["posts"])){
-		exit(1);	
-	}
-
-	switch($_GET["posts"]){
-		case 'getallpost':
-			$blogPosts = new blogPosts();
-
-			$result = $blogPosts->getAllPosts();
-			echo json_encode($result);  
-			break;
-	}
-	
-
-	/*$blogPosts = new blogPosts();
-
-	$result = $blogPosts->getAllPosts();
-	echo json_encode($result);*/  
 ?>
