@@ -16,5 +16,20 @@
 			} 
 			return $post;
 		}
+		
+		public function createPosts($tekst, $sted, $title, $dato){
+			$stmt = $this->$DB->conn->prepare("INSERT INTO BlogPost (tekst, sted,title,dato) VALUES (?, ?, ?, ?)");
+			
+			$stmt->bind_param("ssss", $Tekst, $Sted, $Title, $Dato);
+			
+			$Tekst = $tekst;
+			$Sted = $sted;
+			$Title = $title;
+			$Dato = $dato;
+			$stmt->execute();
+			
+			$stmt->close();
+			$this->$DB->conn->close();
+		}
 	}
 ?>
