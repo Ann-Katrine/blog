@@ -27,7 +27,7 @@
 			
 			if(isset($parsed_url['path'])){
 				$path = $parsed_url['path'];
-			}esle{
+			}else{
 				$path = '/';
 			}
 			
@@ -60,7 +60,7 @@
 					
 					// Check method match
 					if(strtolower($method) == strtolower($route['method'])){
-						array_shift($matches):// Always remove first element. this contains the whole string
+						array_shift($matches);// Always remove first element. this contains the whole string
 						
 						if($basepath!=''&&basepath!='/'){
 							array_shift($matches);// Remove basepath
@@ -92,47 +92,7 @@
 					}
 				}
 			}
-		}
-		
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
+		}		
 			
 	}
 ?>
