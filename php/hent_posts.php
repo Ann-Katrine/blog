@@ -5,7 +5,17 @@
 
 	include_once('./class_bolgpost.php');
 
-	switch(posts){
+	/*switch(){
+		case 1:
+			break;
+	}*/
+		
+		
+	if(!isset($_GET["posts"])){
+		exit(1);	
+	}
+
+	switch($_GET["posts"]){
 		case 'getallpost':
 			$blogPosts = new blogPosts();
 
@@ -13,9 +23,10 @@
 			echo json_encode($result);  
 			break;
 	}
+	
 
-	$blogPosts = new blogPosts();
+	/*$blogPosts = new blogPosts();
 
 	$result = $blogPosts->getAllPosts();
-	echo json_encode($result);  
+	echo json_encode($result);*/  
 ?>

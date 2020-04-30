@@ -191,6 +191,7 @@ a {
 .post {
     background-color: rgb(245,245,245);
     border: 1px solid rgb(136,136,136);
+    margin-top: 30px;
 }
 
 .post h1 {
@@ -217,7 +218,8 @@ a {
 
 /* TODO: Style the p tag and show the images... */
 .post p {
-
+    padding-right: 10px;
+    padding-left: 10px;
 }
 
 /*********************************
@@ -229,4 +231,17 @@ a {
 .editor-background {
     background-color: rgb(12, 18, 18);
     color: lightgrey;
+}
+
+
+/*********************************
+ *
+ *          Footer.
+ *
+ ********************************/
+
+footer {
+    background-color: rgb(56,56,56);
+    margin-top: 50px;
+    min-height: 128px;
 }
