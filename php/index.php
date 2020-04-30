@@ -35,5 +35,20 @@
 		echo json_encode($result);
 	}, "get");
 
+	Route::add('/posts', function(){
+		if(isset($_POST[""]) && isset($_POST[""]) && isset($_POST[""]) && isset($_POST[""]) && isset($_POST[""])){
+			$tekst = $_POST[""]; 
+			$sted = $_POST[""];
+			$title = $_POST[""];
+			$dato = $_POST[""];
+			if(!empty($tekst) && !empty(sted) && !empty($title) && !empty($dato)){
+				$blogPosts = new blogPosts();
+
+				$CreatePosts = $blogPosts->createPosts();
+				echo "oprettet";
+			} 
+		}
+	}, "post");
+
 	Route::run('/php');
 ?>
