@@ -5,28 +5,24 @@
 
 	include_once('./class_bolgpost.php');
 
-	/*switch(){
-		case 1:
+	$method = $_SERVER['REQUEST_METHOD'];
+
+	switch($method){
+		case 'GET':
+			if(!isset($_GET["posts"])){
+				exit(1);
+			}
+
+			switch($_GET["posts"]){
+				case 'getallpost':
+					$blogPosts = new blogPosts();
+
+					$result = $blogPosts->getAllPosts();
+					echo json_encode($result);
+					break;
+			}
 			break;
-	}*/
-		
-		
-	if(!isset($_GET["posts"])){
-		exit(1);	
-	}
-
-	switch($_GET["posts"]){
-		case 'getallpost':
-			$blogPosts = new blogPosts();
-
-			$result = $blogPosts->getAllPosts();
-			echo json_encode($result);  
+		case 'POST':
 			break;
 	}
-	
-
-	/*$blogPosts = new blogPosts();
-
-	$result = $blogPosts->getAllPosts();
-	echo json_encode($result);*/  
 ?>
