@@ -21,9 +21,9 @@
 				"idFollows" => $this->idFollows,
 				"name" => $this->name,
 				"mail" => $this->Mail,
-				"brugernavn" => brugernavn,
-				"password" => password,
-				"Title_idTitle" => title_idTitle
+				"brugernavn" => $brugernavn,
+				"password" => $password,
+				"Title_idTitle" => $Title_idTitle
 			];
 		}
 	}
