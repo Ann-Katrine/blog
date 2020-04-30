@@ -5,6 +5,8 @@ rewriteEngine on
 
 # set your rewrite basename
 # Edit this is your init method too if you script lives in a subfolder RewriteBase /
+RewriteBase /php/
+
 
 # Deliver the folder or file directly if it exists on the server
 RewriteCond %{REQUEST_FILENAME} !-f

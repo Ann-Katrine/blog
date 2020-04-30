@@ -10,7 +10,7 @@
 	switch($method){
 		case 'GET':
 			if(!isset($_GET["posts"])){
-				exit(1);	
+				exit(1);
 			}
 
 			switch($_GET["posts"]){
@@ -18,7 +18,7 @@
 					$blogPosts = new blogPosts();
 
 					$result = $blogPosts->getAllPosts();
-					echo json_encode($result);  
+					echo json_encode($result);
 					break;
 			}
 			break;

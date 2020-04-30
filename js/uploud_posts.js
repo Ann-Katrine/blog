@@ -1,8 +1,12 @@
-axios.get('/php/hent_posts.php', {params: {posts: 'getallpost'}})
+axios.get('/php/posts')
     .then(function (response) {
         console.log(response.data);
 		let data = response.data;
-		// document.getElementById("print").innerHTML = data[0].tekst;
+
+        // Sorts the posts to contain the newest first.
+        data.sort((a, b) => (a.idBlogPost < b.idBlogPost) ? 1 : -1);
+
+        console.log(data);
 
 		for(let i = 0; i < data.length; i++) {
 		    console.log(data[i]);
