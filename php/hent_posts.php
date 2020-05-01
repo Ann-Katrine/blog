@@ -10,7 +10,7 @@
 	switch($method){
 		case 'GET':
 			if(!isset($_GET["posts"])){
-				exit(1);
+				exit(1);	
 			}
 
 			switch($_GET["posts"]){
@@ -18,11 +18,23 @@
 					$blogPosts = new blogPosts();
 
 					$result = $blogPosts->getAllPosts();
-					echo json_encode($result);
+					echo json_encode($result);  
 					break;
 			}
 			break;
 		case 'POST':
+			if(isset($_POST[""]) && isset($_POST[""]) && isset($_POST[""]) && isset($_POST[""]) && isset($_POST[""])){
+				$tekst = $_POST[""]; 
+				$sted = $_POST[""];
+				$title = $_POST[""];
+				$dato = $_POST[""];
+				if(!empty($tekst) && !empty(sted) && !empty($title) && !empty($dato)){
+					$blogPosts = new blogPosts();
+					
+					$CreatePosts = $blogPosts->createPosts();
+					echo "oprettet";
+				} 
+			}
 			break;
 	}
 ?>

@@ -244,4 +244,13 @@ footer {
     background-color: rgb(56,56,56);
     margin-top: 50px;
     min-height: 128px;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+}
+
+footer .content {
+    margin: 12px 16px;
 }
