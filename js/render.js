@@ -28,6 +28,9 @@ function createPost(parent, postObject) {
         switch (textObject.blocks[key].type) {
             case "paragraph":
                 createParagraph(paragraph, textObject.blocks[key]);
+                break;
+            case "header":
+                createHeader(paragraph, textObject.blocks[key]);
         }
 
         console.log(key + ": " + textObject.blocks[key].type);
@@ -65,6 +68,47 @@ function createHeader(parent, block) {
     switch (data.level) {
         case 1:
             header = document.createElement("h1");
+            break;
+        case 2:
+            header = document.createElement("h2");
+            break;
+        case 3:
+            header = document.createElement("h3");
+            break;
+        case 4:
+            header = document.createElement("h4");
+            break;
+        case 5:
+            header = document.createElement("h5");
+            break;
+        case 6:
+            header = document.createElement("h6");
+            break;
+    }
+
+    header.innerText = data.text;
+
+    parent.appendChild(header);
+}
+
+function createList(parent, block) {
+    if(!block.type === "list")
+        return;
+
+    const data = block.data;
+
+    let list;
+
+    switch (data.style) {
+        case "ordered":
+            list = document.createElement("ol");
+            break;
+        default:
+            list = document.createElement("ul");
+    }
+
+    for (let i = 0; i < data.items; i++) {
+        list.appendChild(document.createElement("li").innerText = data.items[i])
     }
 }
 

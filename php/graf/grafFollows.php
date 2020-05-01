@@ -27,17 +27,17 @@
 	$y = 90;
 	$tal = 55;
 	for($i = 1; $i < ($howMany + 1); $i++){
-		get_follows_value($i, $x, $y, $black, $black, $red, $img, $font, $size++, $tal, $DB->conn);
+		get_follows_value($i, $x, $y, $black, $black, $red, $img, $font, $size++, $tal, $DB);
 		$x += 70;
 		$y += 70;
 		$tal += 70;
 	}
 
-	function get_follows_value($dato, $x, $y, $bg, $fg, $img, $font, $size, $tal, $DB) {
+	function get_follows_value($dato, $x, $y, $bg, $fg, $img, $font, $size, $tal, $DB){
 		$getDato = $DB->conn->query("SELECT COUNT(Follows.dato) AS NUM FROM Follows WHERE Follows.dato = ".$dato);
 		$getTheDato = mysqli_fetch_assoc($getDato)["num"];
 
-		imagefilledrectangle($img, $x, 320, $y, 320-($getTheDato), $fg);
+		imagefilledrectangle($img, $x, 320, $y, 320-($getTheDato * 35), $fg);
 		imagerectangle($img, $x, 320, $y, 320-($getTheDato), $bg);
 		imagettftext($img, 13, 0, $tal, 340, $bg, $font, ($size)); // text hen ad x-aksen
 	}
