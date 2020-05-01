@@ -21,7 +21,7 @@
 
 	$howMantFollows = $DB->conn->query("SELECT COUNT(Follows.idFollows) AS NUM FROM Follows");
 	$howMany = mysql_fetch_assoc($howMantFollows)["num"];
-
+ 
 	// antal fra de forskellige skostørrelser
 	$x = 40;
 	$y = 90;
@@ -37,8 +37,8 @@
 		$getDato = $DB->conn->query("SELECT COUNT(Follows.dato) AS NUM FROM Follows WHERE Follows.dato = ".$dato);
 		$getTheDato = mysqli_fetch_assoc($getDato)["num"];
 		
-		imagefilledrectangle($img, $x, 320, $y, 320-($getTheDato), $fg);
-		imagerectangle($img, $x, 320, $y, 320-($getTheDato), $bg);
+		imagefilledrectangle($img, $x, 320, $y, 320-($getTheDato * 35), $fg);
+		imagerectangle($img, $x, 320, $y, 320-($getTheDato * 35), $bg);
 		imagettftext($img, 13, 0, $tal, 340, $bg, $font, ($size)); // text hen ad x-aksen
 	}
 
@@ -51,7 +51,7 @@
 		imageline($img, 20, 390-(35 * $in), 790, 390-(35 * $in), $black);
 		imagettftext($img, 13, 0, 3, 394-(35 * $in), $black, $font, ($text += 1)); // text ned ad y-aksen
 		$in += 1;
-	}
+	} 
 
 	// Draw y-aksen
 	imageline($img, 20, 320, 20, 320-(8*35)-20, $black);
