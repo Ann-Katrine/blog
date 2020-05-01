@@ -24,12 +24,25 @@
 
 			$stmt->bind_param("ssss", $tekst, $sted, $title, $dato);
 
-			$Tekst = $tekst;
+			/*$Tekst = $tekst;
 			$Sted = $sted;
 			$Title = $title;
-			$Dato = $dato;
+			$Dato = $dato;*/
 			$stmt->execute();
 
+			$stmt->close();
+			$DB->conn->close();
+		}
+		
+		public function deltePost($id){
+			$DB = new DB();
+			
+			$stmt = $DB->conn->prepare("DELETE FROM BlogPost WHERE idBlogPost = ?");
+			
+			$stmt->bind_param("i", $idblogpost);
+			
+			$id = $idblogpost;
+			
 			$stmt->close();
 			$DB->conn->close();
 		}

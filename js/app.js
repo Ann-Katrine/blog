@@ -12,6 +12,8 @@ var editor = new EditorJS({
     }
 });
 
+delete axios.defaults.headers.common["Content-Type"];
+
 document.getElementById("create").onclick = function () {
     editor.save().then((outputData) => {
         console.log(outputData);
@@ -24,7 +26,14 @@ document.getElementById("create").onclick = function () {
 
         console.log(postData);
 
-        axios.post("/php/posts", postData)
+        axios({
+            url: "https://ak.sebathefox.dk/php/posts",
+            method: "post",
+            data: postData,
+            // headers: {
+            //     "Content-Type": "application/json"
+            // }
+        })
             .then(function (response) {
                 console.log(response);
             })
@@ -38,3 +47,4 @@ document.getElementById("create").onclick = function () {
 
     editor.save();
 };
+

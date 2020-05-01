@@ -37,10 +37,12 @@
 
 	Route::add('/posts', function(){
 
-		if(isset($_POST["content"]) && isset($_POST["location"]) && isset($_POST["title"])){
-			$tekst = $_POST["content"];
-			$sted = $_POST["location"];
-			$title = $_POST["title"];
+		$data = json_decode(file_get_contents("php://input"), true);
+
+//		if(isset($_POST["content"]) && isset($_POST["location"]) && isset($_POST["title"])){
+			$tekst = json_encode($data["content"]);
+			$sted = $data["location"];
+			$title = $data["title"];
 			$dato = date("Y-m-d");
 			if(!empty($tekst) && !empty($sted) && !empty($title) && !empty($dato)){
 				$blogPosts = new blogPosts();
@@ -48,8 +50,12 @@
 				$blogPosts->createPosts($tekst, $sted, $title, $dato);
 				echo "oprettet";
 			}
-		}
+//		}
 	}, "post");
+
+	Route::add("/graf/grafFollows.php", function () {
+		include_once "./grafFollows.php";
+	});
 
 	Route::run('/php');
 ?>
