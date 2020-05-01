@@ -31,5 +31,9 @@
 			$stmt->close();
 			$this->$DB->conn->close();
 		}
+		
+		public function deltePost(){
+			
+		}
 	}
 ?>
