@@ -17,7 +17,7 @@
 			return $post;
 		}
 
-		public function createPosts($tekst, $sted, $title, $dato){
+		public function createPosts($Tekst, $Sted, $Title, $Dato){
 			$DB = new DB();
 
 			$stmt = $DB->conn->prepare("INSERT INTO BlogPost (tekst, sted,title,dato) VALUES (?, ?, ?, ?)");
@@ -30,6 +30,19 @@
 			$Dato = $dato;
 			$stmt->execute();
 
+			$stmt->close();
+			$DB->conn->close();
+		}
+		
+		public function deltePost($id){
+			$DB = new DB();
+			
+			$stmt = $DB->conn->prepare("DELETE FROM BlogPost WHERE idBlogPost = ?");
+			
+			$stmt->bind_param("i", $idblogpost);
+			
+			$id = $idblogpost;
+			
 			$stmt->close();
 			$DB->conn->close();
 		}
