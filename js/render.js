@@ -31,6 +31,10 @@ function createPost(parent, postObject) {
                 break;
             case "header":
                 createHeader(paragraph, textObject.blocks[key]);
+                break;
+            case "list":
+                createList(paragraph, textObject.blocks[key]);
+                break;
         }
 
         console.log(key + ": " + textObject.blocks[key].type);
@@ -107,13 +111,18 @@ function createList(parent, block) {
             list = document.createElement("ul");
     }
 
-    for (let i = 0; i < data.items; i++) {
-        list.appendChild(document.createElement("li").innerText = data.items[i])
+    for (let key in data.items) {
+        let li = document.createElement("li");
+        li.innerText = parseBr(data.items[key]);
+        // console.log(data.items[i]);
+        list.appendChild(li);
     }
+
+    parent.appendChild(list);
 }
 
 function parseBr(string) {
-    string.replace("<br>", "\r\n");
+    string.replace(/(<|&lt;)br\s*\/*(>|&gt;)/g, " ");
 
     return string;
 }

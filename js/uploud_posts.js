@@ -6,10 +6,10 @@ axios.get('/php/posts')
         // Sorts the posts to contain the newest first.
         data.sort((a, b) => (a.idBlogPost < b.idBlogPost) ? 1 : -1);
 
-        console.log(data);
+        // console.log(data);
 
 		for(let i = 0; i < data.length; i++) {
-		    console.log(data[i]);
+		    console.log(data.length);
             createPost(document.getElementById("posts"), data[i]);
         }
 

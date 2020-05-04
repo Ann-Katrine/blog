@@ -40,11 +40,11 @@ document.getElementById("create").onclick = function () {
             .catch(function (error) {
                 console.log(error);
             });
+
+        alert("Uploadede indlæg");
     })
         .catch(reason => {
             console.log(reason);
         });
-
-    editor.save();
 };
 
