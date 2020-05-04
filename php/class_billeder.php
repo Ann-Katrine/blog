@@ -8,11 +8,12 @@
 			$DB = new DB();
 			$billed = new billed();
 			
-			$billed->createBillede($billeder); /* hjælp */
+			//$billed->createBillede($billeder); /* hjælp */
+			$billedId = $billed->createBillede($billeder);
 			
 			$stmt = $DB->conn->prepare("INSERT INTO BlogPost_has_billeder (BlogPost_idBlogPost,	billeder_idbilleder) VALUES (?, ?)");
 			
-			$stmt->bind_param("ii", $postId, /* hjælp */ );
+			$stmt->bind_param("ii", $postId, $billedId/* hjælp */ );
 			$stmt->execute();
 			
 			$stmt->close();
@@ -33,8 +34,12 @@
 			$stmt->bind_param("s", $billeder);
 			$stmt->execute();
 			
+			$id = $stmt->insert_id;
+			
 			$stmt->close();
 			$DB->conn->close();
+			
+			return $id;
 		}
 	}
 ?>
