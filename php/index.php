@@ -52,6 +52,19 @@
 			}
 //		}
 	}, "post");
+		
+	Route::add('/billed', function(){
+		
+		$data = json_decode(file_get_contents("php://input"), true)
+		
+		$billeder = $data["billed"];
+		if(!empty($billeder)){
+			$billed = new billed();
+			
+			$billed->createBillede($billeder);
+			echo "oprettet";
+		}
+	}, "post");
 
 	Route::add("/graf/grafFollows.php", function () {
 		include_once "./grafFollows.php";

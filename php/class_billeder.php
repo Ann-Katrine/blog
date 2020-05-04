@@ -10,12 +10,19 @@
 		public function createBillede($billeder){
 			$DB = new DB();
 			
-			$stmt = $DB->conn->prepare("INSERT INTO billeder (billeder) VALUES (?)");
+			$target_dir = "uploads/";
+			$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+			$uploadOk = 1;
+
+			if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+				$stmt = $DB->conn->prepare("INSERT INTO billeder (billeder) VALUES (?)");
 			
-			$stmt->bind_param("s", $billeder);
-			$stmt->execute();
+				$stmt->bind_param("s", $billeder);
+				$stmt->execute();
+				
+				$stmt->close();
+			}
 			
-			$stmt->close();
 			$DB->conn->close();
 		}
 	}
