@@ -44,11 +44,10 @@
 			$sted = $data["location"];
 			$title = $data["title"];
 			$dato = date("Y-m-d");
-			$billed = $data["billed"];
-			if(!empty($tekst) && !empty($sted) && !empty($title) && !empty($dato) && !empty($billed)){
+			if(!empty($tekst) && !empty($sted) && !empty($title) && !empty($dato){
 				$blogPosts = new blogPosts();
 
-				$blogPosts->createPosts($tekst, $sted, $title, $dato, $billed);
+				$blogPosts->createPosts($tekst, $sted, $title, $dato);
 				echo "oprettet";
 			}
 //		}
