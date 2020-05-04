@@ -35,10 +35,10 @@
 
 	function get_follows_value($dato, $x, $y, $bg, $fg, $img, $font, $size, $tal, $DB){
 		$getDato = $DB->conn->query("SELECT COUNT(Follows.dato) AS NUM FROM Follows WHERE Follows.dato = ".$dato);
-		$getTheDato = mysqli_fetch_assoc($getDato)["num"];
+		$getTheDato = mysqli_fetch_assoc($getDato)/*["num"]*/;
 
 		imagefilledrectangle($img, $x, 320, $y, 320-($getTheDato * 35), $fg);
-		imagerectangle($img, $x, 320, $y, 320-($getTheDato), $bg);
+		imagerectangle($img, $x, 320, $y, 320-($getTheDato * 35), $bg);
 		imagettftext($img, 13, 0, $tal, 340, $bg, $font, ($size)); // text hen ad x-aksen
 	}
 
@@ -54,7 +54,7 @@
 	} 
 
 	// Draw y-aksen
-	imageline($img, 20, 320, 20, 320-(8*35)-20, $black);
+	imageline($img, 20, 320, 20, 320-(8*35)-20, $black); // 20 320 20 er for at få linjen i y-aksen til at være hvor den er, 320-(8*35)-20 er hvor mange stajer der kommer ud af y-aksen
 
 	// Define output header
 	header('Content-type: image/png');
