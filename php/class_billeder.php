@@ -1,45 +1,48 @@
-<?php 
+<?php
 	include_once('db.php');
-	include_once('billeder.php');
-	include_once('blogpost_billeder.php');
-
-	class mt_billeder_posts{
-		public function createIdBillederPosts($billeder, $postId){
-			$DB = new DB();
-			$billed = new billed();
-			
-			//$billed->createBillede($billeder); /* hjælp */
-			$billedId = $billed->createBillede($billeder);
-			
-			$stmt = $DB->conn->prepare("INSERT INTO BlogPost_has_billeder (BlogPost_idBlogPost,	billeder_idbilleder) VALUES (?, ?)");
-			
-			$stmt->bind_param("ii", $postId, $billedId/* hjælp */ );
-			$stmt->execute();
-			
-			$stmt->close();
-			$DB->conn->close();
-		}
-	}
+	// Bliver ikke brugt.
+//	include_once('billeder.php');
 
 	class billed{
 		public function getAllBilleder(){
-			
+
 		}
-		
+
 		public function createBillede($billeder){
 			$DB = new DB();
-			
-			$stmt = $DB->conn->prepare("INSERT INTO billeder (billeder) VALUES (?)");
-			
-			$stmt->bind_param("s", $billeder);
-			$stmt->execute();
-			
-			$id = $stmt->insert_id;
-			
-			$stmt->close();
+
+			// sætter data der sendes tilbage til at være null.
+			$response = null;
+
+			// Mappen på serveren der skal gemmes billeder i.
+			$target_dir = "/home/sebathefox/domains/ak.sebathefox.dk/public_html/uploads/";
+
+			// Navnet på filen med mappe og det hele.
+			$target_file = $target_dir . basename($_FILES["file"]["name"]);
+
+			// Bruges hvis alt kører fint.
+			$uploadOk = 1;
+
+			// Forsøger at flytte filen fra den midlertidige mappe og hen til vores uploads mappe.
+			if (move_uploaded_file($_FILES["file"]["tmp_name"], $target_file)) {
+				$stmt = $DB->conn->prepare("INSERT INTO billeder (billeder) VALUES (?)");
+
+				// URL'en til at få fat på billedet.
+				$dbUrl = "https://ak.sebathefox.dk/uploads/" . basename($_FILES["file"]["name"]);
+
+				$stmt->bind_param("s", $dbUrl);
+				$stmt->execute();
+
+				$stmt->close();
+
+				// Formaterer et svar til klienten om at alt er okay, i JSON.
+				$response = array("success" => $uploadOk, "file" => array("url" => $dbUrl));
+			}
+
 			$DB->conn->close();
-			
-			return $id;
+
+			// Sender svaret til klienten.
+			return json_encode($response);
 		}
 	}
 ?>

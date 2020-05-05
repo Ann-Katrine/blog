@@ -6,7 +6,3 @@
 function getLastPosts(max) {
 
 }
-
-window.onload = function () {
-    getLastPosts(5);
-};

@@ -35,6 +35,9 @@ function createPost(parent, postObject) {
             case "list":
                 createList(paragraph, textObject.blocks[key]);
                 break;
+            case "image":
+                createImage(paragraph, textObject.blocks[key]);
+                break;
         }
 
         console.log(key + ": " + textObject.blocks[key].type);
@@ -119,6 +122,18 @@ function createList(parent, block) {
     }
 
     parent.appendChild(list);
+}
+
+function createImage(parent, block) {
+    if(!block.type === "image")
+        return;
+
+    const data = block.data;
+
+    let img = document.createElement("img");
+    img.src = data.file.url;
+
+    parent.appendChild(img);
 }
 
 function parseBr(string) {

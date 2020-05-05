@@ -1,7 +1,6 @@
 <?php
 	include_once('db.php');
 	include_once('BlogPost.php');
-	include_once('class_bileder.php');
 
 	class blogPosts{
 		public function getAllPosts(){
@@ -18,36 +17,32 @@
 			return $post;
 		}
 
-		public function createPosts($tekst, $sted, $title, $dato /*ny ting*/, $billede){
+		public function createPosts($tekst, $sted, $title, $dato){
 			$DB = new DB();
 
 			$stmt = $DB->conn->prepare("INSERT INTO BlogPost (tekst, sted,title,dato) VALUES (?, ?, ?, ?)");
 
 			$stmt->bind_param("ssss", $tekst, $sted, $title, $dato);
-
-			/*$Tekst = $tekst;
-			$Sted = $sted;
-			$Title = $title;
-			$Dato = $dato;*/
 			$stmt->execute();
 
+			// Ikke nødvendig mere.
 			//ny ting
-			$mt_billeder_posts = new mt_billeder_posts();
-			$mt_billeder_posts->createIdBillederPosts($billede, mysqli_insert_id($this->$DB->conn));
-			
+//			$mt_billeder_posts = new mt_billeder_posts();
+//			$mt_billeder_posts->createIdBillederPosts($billede, mysqli_insert_id($this->$DB->conn));
+
 			$stmt->close();
 			$DB->conn->close();
 		}
-		
+
 		public function deltePost($id){
 			$DB = new DB();
-			
+
 			$stmt = $DB->conn->prepare("DELETE FROM BlogPost WHERE idBlogPost = ?");
-			
+
 			$stmt->bind_param("i", $idblogpost);
-			
+
 			$id = $idblogpost;
-			
+
 			$stmt->close();
 			$DB->conn->close();
 		}
