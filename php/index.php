@@ -1,5 +1,7 @@
 <?php
+	// Inkluderer alle de nødvendige filer.
 	include('class_bolgpost.php');
+	include("class_billeder.php");
 	include('Route.php');
 
 	// Add base route (startpage)
@@ -28,6 +30,7 @@
 		echo $var1. ' is a great number!';
 	});
 
+	// Henter alle indlæg fra databasen.
 	Route::add('/posts', function(){
 		$blogPosts = new blogPosts();
 
@@ -35,40 +38,48 @@
 		echo json_encode($result);
 	}, "get");
 
+	// Opretter et nyt indlæg.
 	Route::add('/posts', function(){
 
+		/*******************************/
+		/*				MAGI		   */
+		/*******************************/
+		// henter JSON fra en "fil" der ikke eksisterer, men får det hele til at virke?!
 		$data = json_decode(file_get_contents("php://input"), true);
 
-//		if(isset($_POST["content"]) && isset($_POST["location"]) && isset($_POST["title"])){
-			$tekst = json_encode($data["content"]);
-			$sted = $data["location"];
-			$title = $data["title"];
-			$dato = date("Y-m-d");
-			if(!empty($tekst) && !empty($sted) && !empty($title) && !empty($dato){
-				$blogPosts = new blogPosts();
 
-				$blogPosts->createPosts($tekst, $sted, $title, $dato);
-				echo "oprettet";
-			}
-//		}
-	}, "post");
-		
-	Route::add('/billed', function(){
-		
-		$data = json_decode(file_get_contents("php://input"), true)
-		
-		$billeder = $data["billed"];
-		if(!empty($billeder)){
-			$billed = new billed();
-			
-			$billed->createBillede($billeder);
+		// Formaterer content som JSON.
+		$tekst = json_encode($data["content"]);
+		$sted = $data["location"];
+		$title = $data["title"];
+		$dato = date("Y-m-d"); // Laver en ny dato.
+
+		// Tjekker om variablerne er tomme.
+		if(!empty($tekst) && !empty($sted) && !empty($title) && !empty($dato)){
+			$blogPosts = new blogPosts();
+
+			// Opretter indlægget i databasen gennem et "Repository" (Spørg Sebastian for mere information)
+			$blogPosts->createPosts($tekst, $sted, $title, $dato);
 			echo "oprettet";
 		}
 	}, "post");
 
+	// Tilføjer et nyt billede til serveren.
+	Route::add('/billed', function(){
+
+		// Lav et byt billed.
+		$billed = new billed();
+
+		// Opret.
+		// Send null fordi vi får dataen fra billedet.
+		echo $billed->createBillede(null);
+	}, "post");
+
 	Route::add("/graf/grafFollows.php", function () {
-		include_once "./grafFollows.php";
+		// Kører koden i grafFollows.php
+		include_once "./graf/grafFollows.php";
 	});
 
+	// Starter Routing.
 	Route::run('/php');
 ?>

@@ -4,7 +4,25 @@ var editor = new EditorJS({
     tools: {
         header: Header,
         list: List,
-        image: ImageTool,
+        image: {
+            class: ImageTool,
+            config: {
+                uploader: {
+                    uploadByFile(file) {
+                        let formData = new FormData();
+                        formData.append("file", file);
+
+                        return axios.post("/php/billed", formData, {
+                            headers: {
+                                'Content-Type': 'multipart/form-data'
+                            }
+                        }).then(response => {
+                            return response.data;
+                        });
+                    }
+                }
+            }
+        },
         link: LinkTool,
         paragraph: Paragraph,
         quote: Quote,
