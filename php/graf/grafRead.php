@@ -40,5 +40,5 @@ header('Content-Type: image/png');
 imagepng($img);
 
 // Destroy GD image
-imagedestroy($img);
+imagedestroy($img); 
 ?>

@@ -80,6 +80,11 @@
 		include_once "./graf/grafFollows.php";
 	});
 
+	Route::add("/graf/grafRead.php", function () {
+		// Kører koden i grafRead.php
+		include_once "./graf/grafRead.php"; 
+	});
+
 	// Starter Routing.
 	Route::run('/php');
 ?>
