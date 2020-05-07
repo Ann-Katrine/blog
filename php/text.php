@@ -6,7 +6,7 @@ $img = imagecreatetruecolor(600, 450);
 // definer farver
 $black = imagecolorallocate($img, 0, 0, 0);
 $white = imagecolorallocate($img, 255, 255, 255);
-$red = imagecolorallocate($img, 155, 113, 150);
+$red = imagecolorallocate($img, 155, 113, 150); 
 
 // Sætter baggrunden til at være hvid
 imagefill($img, 0, 0, $white);
@@ -44,9 +44,9 @@ imageline($img, 20, 320, 20, 320-(8*35)-20, $black);
 
 // test til tekst
 //$text = "1";
-$font = "/home/sebathefox/domains/ak.sebathefox.dk/public_html/php/graf/arial.ttf";
+$font = "/home/sebathefox/domains/ak.sebathefox.dk/public_html/php/graf/arial.ttf"; 
 $in = 5;
-imageline($img, 20, 310, 320, 310, $black);	//
+imageline($img, 20, 310, 320, 310, $black);	// 
 imageline($img, 20, 300, 320, 300, $black);
 imageline($img, 20, 290, 320, 290, $black);
 imageline($img, 20, 280, 320, 280, $black);
@@ -55,10 +55,10 @@ imagettftext($img, 10, 360, 7, 274, $black, $font, $in); // for at få tekst. 20
 
 // sætter header til PNG
 header('Content-Type: image/png');
-
+ 
 // Output the png image
 imagepng($img);
 
 // ødlæger GD billed
-imagedestroy($img);
+imagedestroy($img); 
 ?>

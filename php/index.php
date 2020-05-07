@@ -85,10 +85,6 @@
 		include_once "./graf/grafRead.php";
 	});
 
-	Route::add("/graf/arial.ttf", function () {
-		echo file_get_contents("./graf/arial.ttf");
-	});
-
 	// Starter Routing.
 	Route::run('/php');
 ?>
