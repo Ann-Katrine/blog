@@ -30,7 +30,7 @@
 		$antalRead = $statiker->getStatikPrDag($id);
 		imagefilledrectangle($img, 40, 320, 90, 320-($antalRead*35), $red);
 		imagerectangle($img, 40, 320, 90, 320-($antalRead*35), $black);
-
+		
 	}
 	/*// Cats: 6
 	imagefilledrectangle($img, 40, 320, 90, 320-(6*35), $red);
@@ -64,8 +64,8 @@
 	imageline($img, 20, 290, 320, 290, $black);
 	imageline($img, 20, 280, 320, 280, $black);
 	imageline($img, 20, 270, 320, 270, $black);
-	imagettftext($img, 10, 360, 7, 274, $black, $font, $in); // for at få tekst. 20 er størrelse, 350 er balacen for tallet, 210 y-aske, 200 x-akse
-
+	imagettftext($img, 10, 360, 7, 274, $black, $font, $in); // for at få tekst. 10 er størrelse, 360 er balacen for tallet, 7 y-aske, 274 x-akse
+ 
 	// sætter header til PNG
 	header('Content-Type: image/png');
 
