@@ -14,6 +14,10 @@ a {
     color: black;
 }
 
+body {
+    background-color: rgb(244, 244, 249);
+}
+
 /*********************************
  *
  *  Top Image / Navigation bar.
@@ -94,9 +98,12 @@ a {
 }
 
 .container {
-    margin-left: 2.5%;
-    margin-right: 2.5%;
+
     padding-bottom: 178px;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -129,8 +136,12 @@ a {
 }
 
 .col-5 {
+    -webkit-box-flex: 5;
+    -moz-box-flex: 5;
+    -webkit-flex-grow: 5;
+    -ms-flex: 5;
     flex-grow: 5;
-    flex-basis: 62.5%;
+    /*flex-basis: 62.5%;*/
 }
 
 .col-6 {
@@ -155,7 +166,7 @@ a {
  ********************************/
 
 .divider {
-    border-top: 3px solid #BBB;
+    border-top: 1px solid #BBB;
     margin: 4px 5px 3px;
     padding-left: 0.5%;
     padding-right: 0.5%;
@@ -192,7 +203,7 @@ a {
  ********************************/
 
 .post {
-    background-color: rgb(245,245,245);
+    background-color: rgb(136, 183, 181);
     border: 1px solid rgb(136,136,136);
     margin-top: 30px;
 }
@@ -264,7 +275,7 @@ footer .content {
 }
 
 
-input[type=text], select, textarea{
+input, select, textarea{
     width: 100%;
     padding: 12px;
     border: 1px solid #ccc;
@@ -272,3 +283,72 @@ input[type=text], select, textarea{
     box-sizing: border-box;
     resize: vertical;
 }
+
+label {
+    padding: 12px 12px 12px 0;
+    display: inline-block;
+}
+
+.col-25 {
+    float: left;
+    width: 25%;
+    margin-top: 6px;
+}
+
+.col-75 {
+    float: left;
+    width: 75%;
+    margin-top: 6px;
+}
+
+.col-100 {
+    float: left;
+    width: 100%;
+    margin-top: 6px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.sidebar {
+    position: fixed;
+    top: 336px;
+    overflow-x: hidden;
+    right: 15px;
+    max-width: 25%;
+    background-color: rgba(93, 115, 126, 0.75);
+    border: 2px solid rgba(93, 115, 126, 1);
+
+}
+
+
+.big-box {
+    width: 80%;
+}
+
+.less-big-box {
+    width: 10%;
+}
+
+
+@media screen and (max-width: 1550px) {
+    .sidebar {
+        display: none;
+    }
+}
+
+/*@media(min-width:576px) {*/
+/*    .container {*/
+/*        flex-flow: row wrap;*/
+/*    }*/
+/*}*/
+
+/*@media(min-width:768px) {*/
+/*    .container {*/
+/*        flex-flow: row nowrap;*/
+/*    }*/
+/*}*/

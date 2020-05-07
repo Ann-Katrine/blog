@@ -39,8 +39,6 @@ function createPost(parent, postObject) {
                 createImage(paragraph, textObject.blocks[key]);
                 break;
         }
-
-        console.log(key + ": " + textObject.blocks[key].type);
     });
 
     // Appends all elements to be childs of their parents.
