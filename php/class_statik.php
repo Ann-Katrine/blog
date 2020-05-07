@@ -8,23 +8,30 @@
 
 			$stmt = $DB->conn->prepare("SELECT number_Read FROM statik WHERE Postid = ?");
 
-			$stmt->bind_param("i", $id);
+			$stmt->bind_param("i", intval($id));
 			$stmt->execute();
+
+			$data = $stmt->get_result()->fetch_array(MYSQLI_ASSOC)["number_Read"];
 
 			$stmt->close();
 			$DB->conn->close();
+
+			return $data;
 		}
 
 		public function countHowManyReadOnOnePost($id){
 			$DB = new DB();
 
-			$stmt = $DB->conn->prepare("SELECT COUNT(number_read) FROM statik WHERE postid = ?");
+			$stmt = $DB->conn->prepare("SELECT COUNT(number_read) AS number_read FROM statik WHERE postid = ?");
 
-			$stmt->bind_param("i", $id);
+			$stmt->bind_param("i", intval($id));
 			$stmt->execute();
+
+			$data = $stmt->get_result()->fetch_array(MYSQLI_ASSOC)["number_read"];
 
 			$stmt->close();
 			$DB->conn->close();
+			return $data;
 		}
 	}
 ?>
