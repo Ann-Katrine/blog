@@ -1,5 +1,5 @@
 <?php
-	include("class_statik.php")
+	include("../class_statik.php");
 
 	// Create GD Image
 	// laver et tomt billed på størrelse med 600 * 450
