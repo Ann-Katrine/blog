@@ -1,5 +1,4 @@
 <?php
-	include_once("db.php");
 	include("class_statik.php")
 
 	// Create GD Image
@@ -9,7 +8,7 @@
 	// definer farver
 	$black = imagecolorallocate($img, 0, 0, 0);
 	$white = imagecolorallocate($img, 255, 255, 255);
-	$red = imagecolorallocate($img, 155, 113, 150); 
+	$red = imagecolorallocate($img, 155, 113, 150);
 
 	// Sætter baggrunden til at være hvid
 	imagefill($img, 0, 0, $white);
@@ -22,15 +21,18 @@
 	- vi sætter 20px mellemrum mellem være bjælke
 	- på grund af der bliver minus med 320 er på grund af ellers står de løftet
 	*/
-	
-	$DB
 
-	$antal = 
+	$statiker = new statiker();
+
+	$antal = $statiker->countHowManyReadOnOnePost($id);
 
 	for($i = 0; $i <= $antal; $i++){
-		
+		$antalRead = $statiker->getStatikPrDag($id);
+		imagefilledrectangle($img, 40, 320, 90, 320-($antalRead*35), $red);
+		imagerectangle($img, 40, 320, 90, 320-($antalRead*35), $black);
+
 	}
-	// Cats: 6
+	/*// Cats: 6
 	imagefilledrectangle($img, 40, 320, 90, 320-(6*35), $red);
 	imagerectangle($img, 40, 320, 90, 320-(6*35), $black);
 
@@ -45,6 +47,7 @@
 	// Whales: 8
 	imagefilledrectangle($img, 250, 320, 300, 320-(8*35), $red);
 	imagerectangle($img, 250, 320, 300, 320-(8*35), $black);
+	*/
 
 	// laver x-axis
 	imageline($img, 20, 320, 320, 320, $black); // x-akse 20 står på linje, 320 skal være det samme som nr. 4-tal, 320 længden på linjen, 320 skal være det samme som nr 2-tal. nr 2 og 4 tal er hvor linjen befinder sig
@@ -54,9 +57,9 @@
 
 	// test til tekst
 	//$text = "1";
-	$font = "/home/sebathefox/domains/ak.sebathefox.dk/public_html/php/graf/arial.ttf"; 
+	$font = "/home/sebathefox/domains/ak.sebathefox.dk/public_html/php/graf/arial.ttf";
 	$in = 5;
-	imageline($img, 20, 310, 320, 310, $black);	// 
+	imageline($img, 20, 310, 320, 310, $black);	//
 	imageline($img, 20, 300, 320, 300, $black);
 	imageline($img, 20, 290, 320, 290, $black);
 	imageline($img, 20, 280, 320, 280, $black);
@@ -70,5 +73,5 @@
 	imagepng($img);
 
 	// ødlæger GD billed
-	imagedestroy($img); 
+	imagedestroy($img);
 ?>
