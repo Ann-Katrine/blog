@@ -80,6 +80,15 @@
 		include_once "./graf/grafFollows.php";
 	});
 
+	Route::add("/graf/grafRead.php", function () {
+		// Kører koden i grafRead.php
+		include_once "./graf/grafRead.php";
+	});
+
+	Route::add("/graf/arial.ttf", function () {
+		echo file_get_contents("./graf/arial.ttf");
+	});
+
 	// Starter Routing.
 	Route::run('/php');
 ?>

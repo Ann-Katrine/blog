@@ -13,57 +13,70 @@
 <nav class="navbar">
     <ul>
         <li><a href="/">Home</a></li>
-        <li><a href="follow.html">Følg Mig!</a>
-        <li>
+        <li><a href="follow.html">Følg Mig!</a><li>
+        <li><a href="create-post.html">Opret nyt indslag</a>
+
     </ul>
 
 </nav>
 
 <div class="content container no-wrap">
-    <div class="col-1 pr-1">
+    <div class="less-big-box">
 
     </div>
-    <div class="col-5 mr-1 ml-1 pl-1 pr-1" style="background-color: aqua;">
+    <div class="big-box" style="background-color: rgb(245,245,245);">
         <div class="form">
             <form>
-                <div class="container no-wrap">
+                <div class="row">
                     <div class="col-25">
                         <label for="name">Navn</label>
                     </div>
                     <div class="col-75">
                         <input id="name" type="text" name="name" required>
                     </div>
-
-
-                    <div class="col-8">
+                </div>
+                <div class="row">
+                    <div class="col-25">
                         <label for="email">Email</label>
+                    </div>
+                    <div class="col-75">
                         <input id="email" type="email" name="email" required>
                     </div>
-
-                    <div class="col-8">
+                </div>
+                <div class="row">
+                    <div class="col-25">
                         <label for="username">Brugernavn</label>
+                    </div>
+                    <div class="col-75">
                         <input id="username" type="text" name="username" required>
                     </div>
-
-                    <div class="col-8">
+                </div>
+                <div class="row">
+                    <div class="col-25">
                         <label for="password">Adgangskode</label>
+                    </div>
+                    <div class="col-75">
                         <input id="password" type="password" name="password" required>
                         <small id="password-alert" style="display: none;">Du skal skrive en bedre adgangskode!</small>
                     </div>
-
-                    <button type="submit" name="submit">Opret</button>
+                    <div class="row">
+                        <button class="col-100" type="submit" name="submit">Opret</button>
+                    </div>
                 </div>
             </form>
         </div>
     </div>
-    <div class="col-2" style="background-color: #80002b;">
-        <h3>Seneste Indlæg</h3>
-        <div class="divider"></div>
+    <div class="less-big-box">
+        <div class="sidebar">
 
-        <div class="posts-box-content">
-            <a href="#">Se! en kage!</a>
+            <h3>Seneste Indlæg</h3>
             <div class="divider"></div>
-            <a href="#">Se! en kage!</a>
+
+            <div class="posts-box-content">
+                <a href="#">Se! en kage!</a>
+                <div class="divider"></div>
+                <a href="#">Se! en kage!</a>
+            </div>
         </div>
 
     </div>
