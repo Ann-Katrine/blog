@@ -80,6 +80,10 @@
 		include_once "./graf/grafFollows.php";
 	});
 
+	Route::add('/post/([0-9]*)', function($id){
+		include("./graf/grafRead.php");
+	});
+
 	Route::add("/graf/grafRead.php", function () {
 		// Kører koden i grafRead.php
 		include_once "./graf/grafRead.php"; 
