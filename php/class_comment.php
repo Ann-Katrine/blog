@@ -26,5 +26,18 @@
 			$stmt->close();
 			$DB->conn->close();
 		}
+		
+		public function delteCommend($id){
+			$DB = new DB();
+
+			$stmt = $DB->conn->prepare("DELETE FROM Commend WHERE  idComment = ?");
+
+			$stmt->bind_param("i", $id);
+
+			//$id = $idblogpost;
+
+			$stmt->close();
+			$DB->conn->close();
+		}
 	}
 ?>
