@@ -1,0 +1,64 @@
+@import "variables";
+
+@import "post";
+
+@font-face {
+  font-family: OpenSans-Light;
+  src: url(/fonts/open-sans/OpenSans-Light.ttf);
+}
+
+
+* {
+  margin: 0;
+  font-family: OpenSans-Light, sans-serif;
+}
+
+body {
+  color: $body-color;
+}
+
+.banner-top {
+  object-fit: cover;
+  object-position: bottom;
+  width: 100%;
+  max-height: 250px;
+
+  img {
+    object-fit: cover;
+    object-position: bottom;
+    width: 100%;
+    max-height: 250px;
+  }
+}
+
+.navbar {
+  margin-top: 0;
+  display: block;
+  overflow: auto;
+  text-align: center;
+
+
+  ul {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    background-color: black;
+    list-style-type: none;
+    overflow: auto;
+
+    li {
+      display: inline;
+
+      a {
+        display: inline-block;
+        padding: 8px;
+        text-decoration: none;
+        color: white;
+      }
+
+      a:hover {
+        background-color: darken($link-color, 20%);
+      }
+    }
+  }
+}
