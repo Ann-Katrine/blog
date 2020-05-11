@@ -99,8 +99,8 @@
 		// multiple rectangles
 		/*
         - grafen vil være 400px bred, 350px høj
-        - for være værdi vil man add 35px
-        - alle graffer vil være 50px bred
+        - for være værdi vil man add 10px
+        - alle graffer vil være 80px bred
         - vi sætter 20px mellemrum mellem være bjælke
         - på grund af der bliver minus med 320 er på grund af ellers står de løftet
         */
@@ -109,11 +109,10 @@
 
 		$antal = $statiker->countHowManyReadOnOnePost($id);
 
-		for($i = 0; $i <= $antal; $i++){
+		for($i = 1; $i <= $antal; $i++){
 			$antalRead = $statiker->getStatikPrDag($id);
-			imagefilledrectangle($img, 40, 320, 90, 320-($antalRead*35), $red);
-			imagerectangle($img, 40, 320, 90, 320-($antalRead*35), $black);
-
+			imagefilledrectangle($img, 40, 320, 80, 320-($antalRead*10), $red);
+			imagerectangle($img, 40, 320, 80, 320-($antalRead*10), $black);
 		}
 		/*// Cats: 6
         imagefilledrectangle($img, 40, 320, 90, 320-(6*35), $red);
@@ -147,6 +146,12 @@
 		imageline($img, 20, 290, 320, 290, $black);
 		imageline($img, 20, 280, 320, 280, $black);
 		imageline($img, 20, 270, 320, 270, $black);
+		imageline($img, 20, 260, 320, 260, $black);
+		imageline($img, 20, 250, 320, 250, $black);
+		imageline($img, 20, 240, 320, 240, $black);
+		imageline($img, 20, 230, 320, 230, $black);  
+		imageline($img, 20, 220, 320, 220, $black);  
+		imageline($img, 20, 210, 320, 210, $black);  
 		imagettftext($img, 10, 360, 7, 274, $black, $font, $in); // for at få tekst. 20 er størrelse, 350 er balacen for tallet, 210 y-aske, 200 x-akse
 
 		// sætter header til PNG
