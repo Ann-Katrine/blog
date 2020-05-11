@@ -100,7 +100,7 @@
 		/*
         - grafen vil være 400px bred, 350px høj
         - for være værdi vil man add 35px
-        - alle graffer vil være 50px bred
+        - alle graffer vil være 80px bred
         - vi sætter 20px mellemrum mellem være bjælke
         - på grund af der bliver minus med 320 er på grund af ellers står de løftet
         */
@@ -111,8 +111,8 @@
 
 		for($i = 0; $i <= $antal; $i++){
 			$antalRead = $statiker->getStatikPrDag($id);
-			imagefilledrectangle($img, 40, 320, 90, 320-($antalRead*35), $red);
-			imagerectangle($img, 40, 320, 90, 320-($antalRead*35), $black);
+			imagefilledrectangle($img, 40, 320, 80, 320-($antalRead*10), $red);
+			imagerectangle($img, 40, 320, 80, 320-($antalRead*10), $black);
 
 		}
 		/*// Cats: 6
