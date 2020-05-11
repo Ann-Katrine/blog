@@ -72,6 +72,12 @@ module.exports = {
             // hash: false,
             template: './' + src_Path + '/index.pug',
             // filename: 'index.html'
-        })
+        }),
+        new HtmlWebpackPlugin({
+            inject: false,
+            // hash: false,
+            template: './' + src_Path + '/follow.pug',
+            // filename: 'index.html'
+        }),
     ]
 };
