@@ -11,7 +11,7 @@
 			$stmt->bind_param("i", intval($id));
 			$stmt->execute();
 
-			$data = $stmt->get_result()->fetch_array(MYSQLI_ASSOC)["number_Read"];
+			$data = $stmt->get_result()->fetch_array(MYSQLI_ASSOC)/*["number_Read"]*/;
 
 			$stmt->close();
 			$DB->conn->close();

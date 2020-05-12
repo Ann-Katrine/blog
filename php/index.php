@@ -108,12 +108,20 @@
 		$statiker = new statiker();
 
 		$antal = $statiker->countHowManyReadOnOnePost($id);
-
+		/*$antalRead = $statiker->getStatikPrDag($id);
+		
 		for($i = 1; $i <= $antal; $i++){
-			$antalRead = $statiker->getStatikPrDag($id);
 			imagefilledrectangle($img, 40, 320, 80, 320-($antalRead*10), $red);
 			imagerectangle($img, 40, 320, 80, 320-($antalRead*10), $black);
-		}
+		}*/
+		
+		$antalRead = $statiker->getStatikPrDag($id);
+		for($i = 1; $i <= $antalRead; $i++){
+
+            imagefilledrectangle($img, 40, 320, 80, 320-($i["number_Read"]*10), $red);
+            imagerectangle($img, 40, 320, 80, 320-($i["number_Read"]*10), $black);
+        }
+		
 		/*// Cats: 6
         imagefilledrectangle($img, 40, 320, 90, 320-(6*35), $red);
         imagerectangle($img, 40, 320, 90, 320-(6*35), $black);
