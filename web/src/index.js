@@ -15,7 +15,7 @@ import './styles/style.scss';
 
 import { getLastPosts, getPostFromUrl, getUrlValue } from "./helpers";
 
-const axios = require("./dist/axios.min");
+import axios, * as others from "./dist/axios.min";
 
 import EditorJS from "./dist/editor";
 
@@ -66,7 +66,7 @@ if(document.getElementById("editorjs") != undefined) {
 
 // TODO: Figure out if the delete statement can be removed?
     delete axios.defaults.headers.common["Content-Type"];
-
+    console.log("YEET");
 // Sets the function to the 'create' element.
     document.getElementById("create").onclick = function () {
         console.log("L69");
