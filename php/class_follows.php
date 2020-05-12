@@ -29,7 +29,7 @@
 			$stmt->bind_param("ss", $date1, $date2);
 			$stmt->execute();
 
-			$data = $stmt->get_result()->fetch_row();
+			$data = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
 
 			$stmt->close();
 			$DB->conn->close();
@@ -60,6 +60,8 @@
 
 			$stmt->bind_param("s", $date1);
 			$stmt->execute();
+			
+			$data = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
 
 			$stmt->close();
 			$DB->conn->close();
@@ -73,6 +75,8 @@
 			$stmt->bind_param("s", $date1);
 			$stmt->execute();
 
+			$data = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+			
 			$stmt->close();
 			$DB->conn->close();
 		}
@@ -85,6 +89,8 @@
 			$stmt->bind_param("ss", $date1, $date2);
 			$stmt->execute();
 
+			$data = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+			
 			$stmt->close();
 			$DB->conn->close();
 		}
