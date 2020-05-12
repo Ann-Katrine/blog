@@ -30,7 +30,9 @@
 		echo $var1. ' is a great number!';
 	});
 
-	// Henter alle indlæg fra databasen.
+/************************************************/
+/*       Henter alle indlæg fra databasen.      */
+/************************************************/
 	Route::add('/posts', function(){
 		$blogPosts = new blogPosts();
 
@@ -38,7 +40,9 @@
 		echo json_encode($result);
 	}, "get");
 
-	// Opretter et nyt indlæg.
+/************************************************/
+/*           Opretter et nyt indlæg.            */
+/************************************************/
 	Route::add('/posts', function(){
 
 		/*******************************/
@@ -64,7 +68,9 @@
 		}
 	}, "post");
 
-	// Tilføjer et nyt billede til serveren.
+/************************************************/
+/*      Tilføjer et nyt billede til serveren.   */
+/************************************************/
 	Route::add('/billed', function(){
 
 		// Lav et byt billed.
@@ -80,12 +86,10 @@
 		include_once "./graf/grafFollows.php";
 	}); */
 
-/*
-/ /
-*/
-
+/************************************************/
+/*                  follow graf                 */
+/************************************************/
 	Route::add('/post/follows/([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))', function($date1){
-
 		include_once("./class_follows.php");
 
 		// Create GD Image
@@ -120,23 +124,6 @@
 			imagerectangle($img, $i * 40 + 25, 320, $i * 40 + 60, 320-($antalRead[$i]["number_Read"] * 10), $black);
         }
 
-		/*// Cats: 6
-        imagefilledrectangle($img, 40, 320, 90, 320-(6*35), $red);
-        imagerectangle($img, 40, 320, 90, 320-(6*35), $black);
-
-        // Dogs: 8
-        imagefilledrectangle($img, 110, 320, 160, 320-(8*35), $red);
-        imagerectangle($img, 110, 320, 160, 320-(8*35), $black);
-
-        // Sheep: 3
-        imagefilledrectangle($img, 180, 320, 230, 320-(3*35), $red);
-        imagerectangle($img, 180, 320, 230, 320-(3*35), $black);
-
-        // Whales: 8
-        imagefilledrectangle($img, 250, 320, 300, 320-(8*35), $red);
-        imagerectangle($img, 250, 320, 300, 320-(8*35), $black);
-        */
-
 		// laver x-axis
 		imageline($img, 20, 320, 320, 320, $black); // x-akse 20 står på linje, 320 skal være det samme som nr. 4-tal, 320 længden på linjen, 320 skal være det samme som nr 2-tal. nr 2 og 4 tal er hvor linjen befinder sig
 
@@ -144,21 +131,18 @@
 		imageline($img, 20, 320, 20, 320-(8*35)-20, $black);
 
 		// test til tekst
-		//$text = "1";
 		$font = "/home/sebathefox/domains/ak.sebathefox.dk/public_html/php/graf/arial.ttf";
 		$in = 5;
-		imageline($img, 20, 310, 320, 310, $black);	//
-		imageline($img, 20, 300, 320, 300, $black);
-		imageline($img, 20, 290, 320, 290, $black);
-		imageline($img, 20, 280, 320, 280, $black);
-		imageline($img, 20, 270, 320, 270, $black);
-		imageline($img, 20, 260, 320, 260, $black);
-		imageline($img, 20, 250, 320, 250, $black);
-		imageline($img, 20, 240, 320, 240, $black);
-		imageline($img, 20, 230, 320, 230, $black);
-		imageline($img, 20, 220, 320, 220, $black);
-		imageline($img, 20, 210, 320, 210, $black);
-		imagettftext($img, 10, 360, 7, 274, $black, $font, $in); // for at få tekst. 20 er størrelse, 350 er balacen for tallet, 210 y-aske, 200 x-akse
+		$tal = 20;
+		$linje = 310;
+		for($i = 0; $i <= $tal; $i++){
+			imageline($img, 20, $linje, 320, $linje, $black);
+			$linje = $linje - 10;
+			if($i == 5){
+				imagettftext($img, 10, 360, 7, 274, $black, $font, $in); // for at få tekst. 20 er størrelse, 350 er balacen for tallet, 210 y-aske, 200 x-akse
+			}
+		}
+		
 
 		// sætter header til PNG
 		header('Content-Type: image/png');
@@ -170,6 +154,9 @@
 		imagedestroy($img);
 	});
 
+/************************************************/
+/*             number read graf                 */
+/************************************************/
 	Route::add('/post/read/([0-9]*)', function($id){
 //		include_once("./graf/grafRead.php");
 		include("./class_statik.php");
