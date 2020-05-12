@@ -1,5 +1,5 @@
 @font-face {
-    font-family: OpenSans;
+    font-family: OpenSans-Light;
     src: url(../fonts/open-sans/OpenSans-Light.ttf);
 }
 
@@ -12,6 +12,10 @@ a {
     padding-left: 2%;
     text-decoration: none;
     color: black;
+}
+
+body, body * {
+    font-family: OpenSans-Light, sans-serif;
 }
 
 body {

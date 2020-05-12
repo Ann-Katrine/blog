@@ -1,0 +1,43 @@
+.posts-box-content {
+  padding-left: 0.5%;
+  padding-right: 0.5%;
+}
+
+.post {
+  background-color: $post-background-color;
+  border: 1px solid $post-border-color;
+  margin-top: 30px;
+
+  h1, h2, h3, h4, h5, h6 {
+    width: 100%;
+    text-align: center;
+    padding-bottom: 16px;
+  }
+
+  small {
+    padding: 10px;
+    width: 100%;
+    text-align: center;
+    display: block;
+    font-size: 15px;
+    color: $post-tag-color;
+
+    a {
+      opacity: 0.7;
+      padding-right: 8px;
+      font-size: 13px;
+      font-style: italic;
+      color: $post-tag-color;
+    }
+  }
+
+  p {
+    padding-right: 10px;
+    padding-left: 10px;
+    padding-bottom: 12px;
+  }
+
+  ul, ol {
+    padding-bottom: 12px;
+  }
+}

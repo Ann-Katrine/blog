@@ -109,19 +109,18 @@
 
 		$antal = $statiker->countHowManyReadOnOnePost($id);
 		/*$antalRead = $statiker->getStatikPrDag($id);
-		
 		for($i = 1; $i <= $antal; $i++){
 			imagefilledrectangle($img, 40, 320, 80, 320-($antalRead*10), $red);
 			imagerectangle($img, 40, 320, 80, 320-($antalRead*10), $black);
 		}*/
-		
-		$antalRead = $statiker->getStatikPrDag($id);
-		for($i = 1; $i <= $antalRead; $i++){
 
-            imagefilledrectangle($img, 40, 320, 80, 320-($i["number_Read"]*10), $red);
-            imagerectangle($img, 40, 320, 80, 320-($i["number_Read"]*10), $black);
+		$antalRead = array_values($statiker->getStatikPrDag($id));
+		for($i = 1; $i <= count($antalRead); $i++){
+
+            imagefilledrectangle($img, $i * 40, 320, $i * 40 + 40, 320-($antalRead[$i - 1]["number_Read"]*10), $red);
+            imagerectangle($img, $i * 40, 320, $i * 40 + 40, 320-($antalRead[$i - 1]["number_Read"]*10), $black);
         }
-		
+
 		/*// Cats: 6
         imagefilledrectangle($img, 40, 320, 90, 320-(6*35), $red);
         imagerectangle($img, 40, 320, 90, 320-(6*35), $black);
@@ -157,9 +156,9 @@
 		imageline($img, 20, 260, 320, 260, $black);
 		imageline($img, 20, 250, 320, 250, $black);
 		imageline($img, 20, 240, 320, 240, $black);
-		imageline($img, 20, 230, 320, 230, $black);  
-		imageline($img, 20, 220, 320, 220, $black);  
-		imageline($img, 20, 210, 320, 210, $black);  
+		imageline($img, 20, 230, 320, 230, $black);
+		imageline($img, 20, 220, 320, 220, $black);
+		imageline($img, 20, 210, 320, 210, $black);
 		imagettftext($img, 10, 360, 7, 274, $black, $font, $in); // for at få tekst. 20 er størrelse, 350 er balacen for tallet, 210 y-aske, 200 x-akse
 
 		// sætter header til PNG

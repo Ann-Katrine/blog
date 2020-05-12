@@ -1,0 +1,29 @@
+extends layout
+
+block content
+    div(class="container")
+        div(class="less-big-box")
+        div(class="big-box")
+            div(class="form")
+                div(class="row")
+                    div(class="col-25")
+                        label(for="name") Name
+                    div(class="col-75")
+                        input(id="name", type="text", name="name" required)
+                div(class="row")
+                    div(class="col-25")
+                        label(for="email") Email
+                    div(class="col-75")
+                        input(id="email", type="email", name="email" required)
+                div(class="row")
+                    div(class="col-25")
+                        label(for="username") Brugernavn
+                    div(class="col-75")
+                        input(id="username", type="text", name="username" required)
+                div(class="row")
+                    div(class="col-25")
+                        label(for="password") Password
+                    div(class="col-75")
+                        input(id="password", type="password", name="password" required)
+                        sma
+        div(class="less-big-box")

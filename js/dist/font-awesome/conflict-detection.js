@@ -656,9 +656,9 @@
     var styleTags = Array.from(DOCUMENT.getElementsByTagName('style')).filter(function (t) {
       if (t.hasAttribute(detectionIgnoreAttr)) {
         return false;
-      } // If the browser has loaded the FA5 CSS, let's not test that <style> element.
+      } // If the browser has loaded the FA5 CSS, let's not test that <styles> element.
       // Its enough that we'll be testing for traces of the corresponding JS being loaded, and testing
-      // this <style> would only produce a false negative anyway.
+      // this <styles> would only produce a false negative anyway.
 
 
       if (WINDOW.FontAwesomeConfig && t.innerText.match(new RegExp("svg:not\\(:root\\)\\.".concat(WINDOW.FontAwesomeConfig.replacementClass)))) {

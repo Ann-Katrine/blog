@@ -1,0 +1,9 @@
+.sidebar {
+  position: fixed;
+  top: 336px;
+  overflow-x: hidden;
+  right: 15px;
+  max-width: 25%;
+  background-color: darken($sidebar-background-color, 25%);
+  border: $sidebar-border-color;
+}
