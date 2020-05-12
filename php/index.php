@@ -75,12 +75,16 @@
 		echo $billed->createBillede(null);
 	}, "post");
 
-	Route::add("/graf/grafFollows.php", function () {
+	/*Route::add("/graf/grafFollows.php", function () {
 		// Kører koden i grafFollows.php
 		include_once "./graf/grafFollows.php";
-	});  
+	}); */ 
 
-	Route::add('/post/follows/[0-9]*', function($id){
+/*
+/ /
+*/
+
+	Route::add('/post/follows/[0-9]*', function($date1){
 		include_once("./class_follows.php");
 		
 		// Create GD Image
@@ -106,14 +110,9 @@
 
 		$followship = new followship();
 
-		$antal = $followship->getFollowsByDay($date1);
-		/*$antalRead = $statiker->getStatikPrDag($id);
-		for($i = 1; $i <= $antal; $i++){
-			imagefilledrectangle($img, 40, 320, 80, 320-($antalRead*10), $red);
-			imagerectangle($img, 40, 320, 80, 320-($antalRead*10), $black);
-		}*/
-
-		$antalRead = array_values($statiker->getStatikPrDag($id));
+		$antal = $followship->getHowManyFollowsOnADay($date1);
+		
+		$antalRead = array_values($followshipl->getFollowsByDay($date1));
 		for($i = 0; $i <= count($antalRead); $i++){
 
 			imagefilledrectangle($img, $i * 40 + 25, 320, $i * 40 + 60, 320-($antalRead[$i]["number_Read"] * 10), $red);
@@ -262,10 +261,10 @@
 
 	});
 
-	Route::add("/graf/grafRead.php", function () {
+	/*Route::add("/graf/grafRead.php", function () {
 		// Kører koden i grafRead.php
 //		include_once "./graf/grafRead.php";
-	});
+	});*/
 
 	// Starter Routing.
 	Route::run('/php');
