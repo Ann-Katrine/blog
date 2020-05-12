@@ -84,7 +84,7 @@
 / /
 */
 
-	Route::add('/post/follows/[0-9]*', function($date1){
+	Route::add('/post/follows/([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))', function($date1){
 		include_once("./class_follows.php");
 		
 		// Create GD Image
