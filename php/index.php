@@ -78,15 +78,16 @@
 	/*Route::add("/graf/grafFollows.php", function () {
 		// Kører koden i grafFollows.php
 		include_once "./graf/grafFollows.php";
-	}); */ 
+	}); */
 
 /*
 / /
 */
 
 	Route::add('/post/follows/([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))', function($date1){
+
 		include_once("./class_follows.php");
-		
+
 		// Create GD Image
 		// laver et tomt billed på størrelse med 600 * 450
 		$img = imagecreatetruecolor(600, 450);
@@ -111,8 +112,8 @@
 		$followship = new followship();
 
 		$antal = $followship->getHowManyFollowsOnADay($date1);
-		
-		$antalRead = array_values($followshipl->getFollowsByDay($date1));
+
+		$antalRead = array_values($followship->getFollowsByDay($date1));
 		for($i = 0; $i <= count($antalRead); $i++){
 
 			imagefilledrectangle($img, $i * 40 + 25, 320, $i * 40 + 60, 320-($antalRead[$i]["number_Read"] * 10), $red);

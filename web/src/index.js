@@ -43,11 +43,14 @@ if(document.getElementById("editorjs") != undefined) {
                             let formData = new FormData();
                             formData.append("file", file);
 
+                            console.log("Haj");
+
                             return axios.post("/php/billed", formData, {
                                 headers: {
                                     'Content-Type': 'multipart/form-data'
                                 }
                             }).then(response => {
+                                console.log("Hej");
                                 return response.data;
                             });
                         }
