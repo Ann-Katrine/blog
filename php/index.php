@@ -78,7 +78,7 @@
 	Route::add("/graf/grafFollows.php", function () {
 		// Kører koden i grafFollows.php
 		include_once "./graf/grafFollows.php";
-	}); 
+	});  
 
 	Route::add('/post/read/([0-9]*)', function($id){
 //		include_once("./graf/grafRead.php");
