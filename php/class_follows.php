@@ -56,5 +56,29 @@
 			$stmt->close();
 			$DB->conn->close();
 		}
+		
+		public function getHowManyFollowsOnADay($date1){
+			$DB = new DB();
+			
+			$stmt = $DB->conn->prepare("SELECT COUNT(idFollows) FROM Follows WHERE dato =  ?");
+			
+			$stmt->bind_param("s", $date1);
+			$stmt->execute();
+			
+			$stmt->close();
+			$DB->conn->close();
+		}
+		
+		public function getHowManyFollowsOnAMonth($date1, $date2){
+			$DB = new DB();
+			
+			$stmt = $DB->conn->prepare("SELECT COUNT(idFollows) FROM Follows WHERE dato BETWEEN ? AND ?");
+			
+			$stmt->bind_param("ss", $date1, $date2);
+			$stmt->execute();
+			
+			$stmt->close();
+			$DB->conn->close();
+		}
 	}
 ?>
