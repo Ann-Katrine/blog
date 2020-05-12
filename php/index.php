@@ -80,7 +80,7 @@
 		include_once "./graf/grafFollows.php";
 	});
 
-	Route::add('/post/([0-9]*)', function($id){
+	Route::add('/post/read/([0-9]*)', function($id){
 //		include_once("./graf/grafRead.php");
 		include("./class_statik.php");
 
@@ -109,17 +109,16 @@
 
 		$antal = $statiker->countHowManyReadOnOnePost($id);
 		/*$antalRead = $statiker->getStatikPrDag($id);
-
 		for($i = 1; $i <= $antal; $i++){
 			imagefilledrectangle($img, 40, 320, 80, 320-($antalRead*10), $red);
 			imagerectangle($img, 40, 320, 80, 320-($antalRead*10), $black);
 		}*/
 
 		$antalRead = array_values($statiker->getStatikPrDag($id));
-		for($i = 1; $i <= count($antalRead); $i++){
+		for($i = 0; $i <= count($antalRead); $i++){
 
-            imagefilledrectangle($img, $i * 40, 320, $i * 40 + 40, 320-($antalRead[$i - 1]["number_Read"]*10), $red);
-            imagerectangle($img, $i * 40, 320, $i * 40 + 40, 320-($antalRead[$i - 1]["number_Read"]*10), $black);
+			imagefilledrectangle($img, $i * 40 + 25, 320, $i * 40 + 60, 320-($antalRead[$i]["number_Read"] * 10), $red);
+			imagerectangle($img, $i * 40 + 25, 320, $i * 40 + 60, 320-($antalRead[$i]["number_Read"] * 10), $black);
         }
 
 		/*// Cats: 6

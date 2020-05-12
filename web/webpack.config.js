@@ -17,7 +17,7 @@ module.exports = {
     },
     output: {
         path: path.resolve(__dirname, prod_Path),
-        filename: '[name].[chunkhash].js'
+        filename: '[name].js'
     },
     devtool: 'source-map',
     devServer: {
@@ -71,13 +71,13 @@ module.exports = {
             inject: false,
             // hash: false,
             template: './' + src_Path + '/index.pug',
-            // filename: 'index.html'
+            filename: 'index.html'
         }),
         new HtmlWebpackPlugin({
             inject: false,
             // hash: false,
             template: './' + src_Path + '/follow.pug',
-            // filename: 'index.html'
+            filename: 'follow.html'
         }),
     ]
 };
