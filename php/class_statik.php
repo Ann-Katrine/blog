@@ -10,6 +10,7 @@
 
 			$stmt->bind_param("i", intval($id));
 			$stmt->execute();
+			
 
 //			while($row = $stmt->get_result()->fetch_row()) {
 //				$data[] = $row;
@@ -17,9 +18,9 @@
 
 			$data = $stmt->get_result()->fetch_all(MYSQLI_ASSOC)/*["number_Read"]*/;
 
-			$stmt->close();
+			$stmt->close();  
 			$DB->conn->close();
-
+			
 			return $data;
 		}
 
@@ -27,6 +28,37 @@
 			$DB = new DB();
 
 			$stmt = $DB->conn->prepare("SELECT COUNT(number_read) AS number_read FROM statik WHERE postid = ?");
+
+			$stmt->bind_param("i", intval($id));
+			$stmt->execute();
+
+			$data = $stmt->get_result()->fetch_array(MYSQLI_ASSOC)["number_read"];
+
+			$stmt->close();
+			$DB->conn->close();
+			return $data;
+		}
+		
+		public function getDatoPrDag($id){
+			$DB = new DB();
+
+			$stmt = $DB->conn->prepare("SELECT dato FROM statik WHERE Postid =  ?");
+
+			$stmt->bind_param("i", intval($id));
+			$stmt->execute();
+			
+			$data = $stmt->get_result()->fetch_all(MYSQLI_ASSOC)/*["number_Read"]*/;
+			
+			$stmt->close();  
+			$DB->conn->close();
+			
+			return $data;
+		}
+		
+		public function countHowManyDatoOnOnePost($id){
+			$DB = new DB();
+
+			$stmt = $DB->conn->prepare("SELECT COUNT(dato) AS dato FROM statik WHERE postid = ?");
 
 			$stmt->bind_param("i", intval($id));
 			$stmt->execute();
