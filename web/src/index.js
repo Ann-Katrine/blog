@@ -106,19 +106,46 @@ if(document.getElementById("editorjs") != undefined) {
 
 import {createPost} from "./render";
 
-axios.get('/php/posts')
-    .then((response) => {
-        let data = response.data;
+if(document.getElementById("posts") != undefined) {
 
-        // Sorts the posts to contain the newest first.
-        data.sort((a, b) => (parseInt(a.idBlogPost) < parseInt(b.idBlogPost)) ? 1 : -1);
+    axios.get('/php/posts')
+        .then((response) => {
+            let data = response.data;
+
+            // Sorts the posts to contain the newest first.
+            data.sort((a, b) => (parseInt(a.idBlogPost) < parseInt(b.idBlogPost)) ? 1 : -1);
 
 
-        for(let i = 0; i < data.length; i++) {
-            createPost(document.getElementById("posts"), data[i]);
-        }
+            for (let i = 0; i < data.length; i++) {
+                createPost(document.getElementById("posts"), data[i]);
+            }
 
-    })
-    .catch(function (error) {
-        console.log(error);
-    });
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+}
+
+function getPostFromUrl() {
+    let postId = getUrlValue("post");
+
+    axios.get('/php/post/read/' + postId)
+        .then(function (response) {
+            let data = response.data;
+
+            createPost(document.getElementById("post"), data);
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+}
+
+function getUrlValue(key) {
+    const urlParams = new URLSearchParams(window.location.search);
+
+    return urlParams.get(key);
+}
+
+if(document.getElementById("post") != undefined) {
+    getPostFromUrl();
+}

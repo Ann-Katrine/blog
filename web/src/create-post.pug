@@ -3,7 +3,21 @@ block content
     div(class="container")
         div(class="less-big-box")
         div(class="big-box editor-background")
-            input(
+            div(class="form")
+                div(class="row")
+                    div(class="col-25")
+                        label(for="title") Title
+                    div(class="col-75")
+                        input(id="title", type="text", name="title" required)
+                div(class="row")
+                    div(class="col-25")
+                        label(for="location") Location
+                    div(class="col-75")
+                        input(id="location", type="text", name="location" required)
+                div(class="row")
+                    div(id="editorjs")
+                div(class="row")
+                    button(id="create", class="col-100", type="submit", name="submit") Opret
         div(class="less-big-box")
             div(class="sidebar")
                 h3 Seneste Indlæg
