@@ -4,7 +4,7 @@
  * @param parent The container that holds all of the posts.
  * @param postObject The JSON object that holds the data from the server.
  */
-function createPost(parent, postObject) {
+export function createPost(parent, postObject) {
 
     // Creates the main post element.
     let post = document.createElement("div");
@@ -139,8 +139,3 @@ function parseBr(string) {
 
     return string;
 }
-
-
-module.exports = {
-    createPost: createPost
-};

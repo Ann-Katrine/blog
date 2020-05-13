@@ -4,8 +4,8 @@
   overflow-x: hidden;
   right: 15px;
   max-width: 25%;
-  background-color: darken($sidebar-background-color, 25%);
-  border: $sidebar-border-color;
+  background-color: $sidebar-background-color;
+  border: 2px solid $sidebar-border-color;
 }
 
 .posts-box-content {

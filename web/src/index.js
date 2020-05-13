@@ -1,4 +1,4 @@
-import 'normalize.css';
+// import 'normalize.css';
 import './styles/style.scss';
 
 // import axios from "./dist/axios.min";
@@ -13,9 +13,9 @@ import './styles/style.scss';
 // import Quote from "./dist/quote";
 // import Table from "./dist/table";
 
-import { getLastPosts, getPostFromUrl, getUrlValue } from "./helpers";
+// import { getLastPosts, getPostFromUrl, getUrlValue } from "./helpers";
 
-const axios = require("./dist/axios.min");
+import axios, * as others from "./dist/axios.min";
 
 import EditorJS from "./dist/editor";
 
@@ -66,7 +66,7 @@ if(document.getElementById("editorjs") != undefined) {
 
 // TODO: Figure out if the delete statement can be removed?
     delete axios.defaults.headers.common["Content-Type"];
-
+    console.log("YEET");
 // Sets the function to the 'create' element.
     document.getElementById("create").onclick = function () {
         console.log("L69");
@@ -104,21 +104,48 @@ if(document.getElementById("editorjs") != undefined) {
 
 }
 
-import createPost from "./render";
+import {createPost} from "./render";
 
-axios.get('/php/posts')
-    .then(function (response) {
-        let data = response.data;
+if(document.getElementById("posts") != undefined) {
 
-        // Sorts the posts to contain the newest first.
-        data.sort((a, b) => (parseInt(a.idBlogPost) < parseInt(b.idBlogPost)) ? 1 : -1);
+    axios.get('/php/posts')
+        .then((response) => {
+            let data = response.data;
+
+            // Sorts the posts to contain the newest first.
+            data.sort((a, b) => (parseInt(a.idBlogPost) < parseInt(b.idBlogPost)) ? 1 : -1);
 
 
-        for(let i = 0; i < data.length; i++) {
-            createPost(document.getElementById("posts"), data[i]);
-        }
+            for (let i = 0; i < data.length; i++) {
+                createPost(document.getElementById("posts"), data[i]);
+            }
 
-    })
-    .catch(function (error) {
-        console.log(error);
-    });
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+}
+
+function getPostFromUrl() {
+    let postId = getUrlValue("post");
+
+    axios.get('/php/post/read/' + postId)
+        .then(function (response) {
+            let data = response.data;
+
+            createPost(document.getElementById("post"), data);
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+}
+
+function getUrlValue(key) {
+    const urlParams = new URLSearchParams(window.location.search);
+
+    return urlParams.get(key);
+}
+
+if(document.getElementById("post") != undefined) {
+    getPostFromUrl();
+}

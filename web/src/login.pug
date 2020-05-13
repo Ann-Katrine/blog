@@ -1,0 +1,23 @@
+extends layout
+
+block content
+    div(class="container")
+        div(class="less-big-box")
+        div(class="big-box")
+            form(action="php/login")
+                div(class="row")
+                    div(class="col-25")
+                        label(for="username") Brugernavn
+                    div(class="col-75")
+                        input(id="username", type="text", name="username" required)
+                div(class="row")
+                    div(class="col-25")
+                        label(for="password") Password
+                    div(class="col-75")
+                        input(id="password", type="password", name="password" required)
+                div(class="row")
+                    div(class="col-25")
+                        label(for="submit") Login
+                    div(class="col-75")
+                        input(id="submit", type="submit", name="submit", value="Login")
+        div(class="less-big-box")

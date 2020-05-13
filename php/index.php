@@ -89,9 +89,14 @@
 /************************************************/
 /*                  follow graf                 */ // ikke færdig
 /************************************************/
-	Route::add('/post/follows/([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))', function($date1, $date2){
+	Route::add('/post/follows/([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])/[12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))', function($date1, $date2){
 		include_once("./class_follows.php");
- 
+
+		$dates = explode("/", $date1);
+
+		$d1 = $dates[0];
+		$d2 = $dates[1];
+
 		// Create GD Image
 		// laver et tomt billed på størrelse med 600 * 450
 		$img = imagecreatetruecolor(600, 450);
@@ -115,19 +120,20 @@
 
 		$followship = new followship();
 
-		$antal = $followship->countHowManyFollowsOnAMonth($date1, $date2);
+//		$antal = $followship->countHowManyFollowsOnAMonth($date1, $date2);
 		$font = "/home/sebathefox/domains/ak.sebathefox.dk/public_html/php/graf/arial.ttf";
-		$antalRead = array_values($followship->getFollowsByWeek($date1, $date2));
-		for($i = 0; $i <= $antalRead; $i++){
+		$antalRead = array_values($followship->getFollowsByWeek($d1, $d2));
 
-			imagefilledrectangle($img, $i * 40 + 25, 320, $i * 40 + 60, 320-($antalRead[$i]["number_Read"] * 10), $red);
-			imagerectangle($img, $i * 40 + 25, 320, $i * 40 + 60, 320-($antalRead[$i]["number_Read"] * 10), $black);
+		for($i = 0; $i < count($antalRead); $i++){
+
+			imagefilledrectangle($img, $i * 40 + 25, 320, $i * 40 + 60, 320-(count($antalRead) * 10), $red);
+			imagerectangle($img, $i * 40 + 25, 320, $i * 40 + 60, 320-(count($antalRead) * 10), $black);
         }
-		
+
 		//$antalDato =
 		//$datoRead = array_values()
 		/*for($i = 0; $i <= $antaldato; $i++){
-			
+
 		}*/
 
 		// laver x-axis
@@ -137,7 +143,7 @@
 		imageline($img, 20, 320, 20, 320-(8*35)-20, $black);
 
 		// test til tekst
-		
+
 		//$in = 5;
 		$tal = 28;
 		$linje = 310;
@@ -192,7 +198,7 @@
 		$statiker = new statiker();
 
 		$antal = $statiker->countHowManyReadOnOnePost($id);
-		
+
 		$font = "/home/sebathefox/domains/ak.sebathefox.dk/public_html/php/graf/arial.ttf";
 		$x_akseTal = 35;
 		$antalRead = array_values($statiker->getStatikPrDag($id));
@@ -201,7 +207,7 @@
 			imagefilledrectangle($img, $i * 40 + 25, 320, $i * 40 + 60, 320-($antalRead[$i]["number_Read"] * 10), $red);
 			imagerectangle($img, $i * 40 + 25, 320, $i * 40 + 60, 320-($antalRead[$i]["number_Read"] * 10), $black);
         }
-		
+
 		$antalDato = $statiker->countHowManyDatoOnOnePost($id);
 		$datoRead = array_values($statiker->getDatoPrDag($id));
 		for($i = 0; $i <= $antalDato; $i++){
@@ -233,7 +239,7 @@
 		imageline($img, 20, 320, 20, 320-(8*35)-20, $black);
 
 		// tekst på y-aksesn
-		$tal = 28; 
+		$tal = 28;
 		$linje = 310;
 		for($i = 0; $i <= $tal; $i++){
 			imageline($img, 20, $linje, 320, $linje, $black);
@@ -244,7 +250,7 @@
 		imagettftext($img, 10, 360, 3, 174, $black, $font, "15");
 		imagettftext($img, 10, 360, 3, 124, $black, $font, "20");
 		imagettftext($img, 10, 360, 3, 74, $black, $font, "25");
-		
+
 		// tekst på x-aksen
 		//imagettftext($img, 10, 330, 35, 334, $black, $font, "god dag var");
 		//imagettftext($img, 10, 330, 75, 334, $black, $font, "god dag var");

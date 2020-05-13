@@ -79,5 +79,23 @@ module.exports = {
             template: './' + src_Path + '/follow.pug',
             filename: 'follow.html'
         }),
+        new HtmlWebpackPlugin({
+            inject: false,
+            // hash: false,
+            template: './' + src_Path + '/create-post.pug',
+            filename: 'create-post.html'
+        }),
+        new HtmlWebpackPlugin({
+            inject: false,
+            // hash: false,
+            template: './' + src_Path + '/login.pug',
+            filename: 'login.html'
+        }),
+        new HtmlWebpackPlugin({
+            inject: false,
+            // hash: false,
+            template: './' + src_Path + '/post.pug',
+            filename: 'post.html'
+        }),
     ]
 };

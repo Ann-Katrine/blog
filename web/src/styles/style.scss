@@ -6,6 +6,8 @@
 
 @import "grid";
 
+@import "editor";
+
 @font-face {
   font-family: OpenSans-Light;
   src: url(/fonts/open-sans/OpenSans-Light.ttf);
@@ -19,6 +21,13 @@
 
 body {
   color: $body-color;
+}
+
+.divider {
+  border-top: 1px solid #BBB;
+  margin: 4px 5px 3px;
+  padding-left: 0.5%;
+  padding-right: 0.5%;
 }
 
 .banner-top {
@@ -65,4 +74,10 @@ body {
       }
     }
   }
+}
+
+a {
+  padding-left: 2%;
+  text-decoration: none;
+  color: black;
 }
