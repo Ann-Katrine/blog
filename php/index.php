@@ -91,7 +91,7 @@
 /************************************************/
 	Route::add('/post/follows/([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))', function($date1, $date2){
 		include_once("./class_follows.php");
-
+ 
 		// Create GD Image
 		// laver et tomt billed på størrelse med 600 * 450
 		$img = imagecreatetruecolor(600, 450);
@@ -115,20 +115,20 @@
 
 		$followship = new followship();
 
-		$antal = $followship->getHowManyFollowsOnADay($date1);
+		$antal = $followship->countHowManyFollowsOnAMonth($date1, $date2);
 		$font = "/home/sebathefox/domains/ak.sebathefox.dk/public_html/php/graf/arial.ttf";
-		$antalRead = array_values($followship->getFollowsByDay($date1));
-		for($i = 0; $i <= count($antalRead); $i++){
+		$antalRead = array_values($followship->getFollowsByWeek($date1, $date2));
+		for($i = 0; $i <= $antalRead; $i++){
 
 			imagefilledrectangle($img, $i * 40 + 25, 320, $i * 40 + 60, 320-($antalRead[$i]["number_Read"] * 10), $red);
 			imagerectangle($img, $i * 40 + 25, 320, $i * 40 + 60, 320-($antalRead[$i]["number_Read"] * 10), $black);
         }
 		
-		$antalDato =
-		$datoRead = array_values()
-		for($i = 0; $i <= $antaldato; $i++){
+		//$antalDato =
+		//$datoRead = array_values()
+		/*for($i = 0; $i <= $antaldato; $i++){
 			
-		}
+		}*/
 
 		// laver x-axis
 		imageline($img, 20, 320, 320, 320, $black); // x-akse 20 står på linje, 320 skal være det samme som nr. 4-tal, 320 længden på linjen, 320 skal være det samme som nr 2-tal. nr 2 og 4 tal er hvor linjen befinder sig

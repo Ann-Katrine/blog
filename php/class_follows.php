@@ -21,22 +21,6 @@
 			$DB->conn->close();
 		}
 
-		public function getFollowsByMonth($date1, $date2){
-			$DB = new DB();
-
-			$stmt = $DB->conn->prepare("SELECT idFollows FROM Follows WHERE dato BETWEEN ? AND ?");
-
-			$stmt->bind_param("ss", $date1, $date2);
-			$stmt->execute();
-
-			$data = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
-
-			$stmt->close();
-			$DB->conn->close();
-
-			return $data;
-		}
-
 		public function getFollowsByWeek($date1, $date2){
 			$DB = new DB();
 
@@ -53,7 +37,7 @@
 			return $data;
 		}
 
-		public function getFollowsByDay($date1){
+		/*public function getFollowsByDay($date1){
 			$DB = new DB();
 
 			$stmt = $DB->conn->prepare("SELECT idFollows FROM Follows WHERE dato = ?");
@@ -67,7 +51,7 @@
 			$DB->conn->close();
 		}
 
-		public function countHowManyFollowsOnADay($date1){
+		//public function countHowManyFollowsOnADay($date1){
 			$DB = new DB();
 
 			$stmt = $DB->conn->prepare("SELECT COUNT(idFollows) FROM Follows WHERE dato =  ?");
@@ -79,8 +63,8 @@
 			
 			$stmt->close();
 			$DB->conn->close();
-		}
-
+		}*/
+  
 		public function countHowManyFollowsOnAMonth($date1, $date2){
 			$DB = new DB();
 
@@ -93,7 +77,7 @@
 			
 			$stmt->close();
 			$DB->conn->close();
-		}
+		} 
 		
 		public function getDatoFromToDato($date1, $date2){
 			$DB = new DB();
