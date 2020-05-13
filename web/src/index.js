@@ -1,4 +1,4 @@
-import 'normalize.css';
+// import 'normalize.css';
 import './styles/style.scss';
 
 // import axios from "./dist/axios.min";
@@ -13,7 +13,7 @@ import './styles/style.scss';
 // import Quote from "./dist/quote";
 // import Table from "./dist/table";
 
-import { getLastPosts, getPostFromUrl, getUrlValue } from "./helpers";
+// import { getLastPosts, getPostFromUrl, getUrlValue } from "./helpers";
 
 import axios, * as others from "./dist/axios.min";
 
@@ -104,10 +104,10 @@ if(document.getElementById("editorjs") != undefined) {
 
 }
 
-import createPost from "./render";
+import {createPost} from "./render";
 
 axios.get('/php/posts')
-    .then(function (response) {
+    .then((response) => {
         let data = response.data;
 
         // Sorts the posts to contain the newest first.

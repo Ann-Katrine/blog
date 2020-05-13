@@ -1,26 +1,25 @@
-module.exports = {
-    getLastPosts: function(max)
-    {
 
-    },
+export function getLastPosts(max)
+{
 
-    getPostFromUrl: function () {
-        let postId = getUrlValue("post");
+}
 
-        axios.get('/php/posts/' + postId)
-            .then(function (response) {
-                let data = response.data;
+export function getPostFromUrl() {
+    let postId = getUrlValue("post");
 
-                createPost(document.getElementById("post"), data);
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
-    },
+    axios.get('/php/posts/' + postId)
+        .then(function (response) {
+            let data = response.data;
 
-    getUrlValue: function (key) {
-        const urlParams = new URLSearchParams(window.location.search);
+            createPost(document.getElementById("post"), data);
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+}
 
-        return urlParams.get(key);
-    }
-};
+export function getUrlValue(key) {
+    const urlParams = new URLSearchParams(window.location.search);
+
+    return urlParams.get(key);
+}
