@@ -16,6 +16,20 @@
 			}
 			return $post;
 		}
+		
+		public function getOnePostById($id){
+			$DB = new DB();
+			
+			$stmt = $DB->conn->prepare("SELECT * FROM `BlogPost` WHERE idBlogPost = ?");
+			
+			$stmt ->bind_param("i", $id);
+			$stmt->execute();
+			
+			$data = $stmt->get_result();
+			
+			$stmt->close();
+			$DB->conn->close();
+		}
 
 		public function createPosts($tekst, $sted, $title, $dato){
 			$DB = new DB();
