@@ -84,7 +84,7 @@
 
 			$stmt = $DB->conn->prepare("SELECT dato FROM Follows WHERE dato BETWEEN ? AND ?");
 
-			$stmt->bind_param("s", $dato1, $dato2);
+			$stmt->bind_param("s", $dato1, $dato2));
 			$stmt->execute();
 
 			$data = $stmt->get_result()->fetch_all(MYSQLI_ASSOC)/*["number_Read"]*/;
@@ -100,7 +100,7 @@
 
 			$stmt = $DB->conn->prepare("SELECT COUNT(dato) AS dato FROM Follows WHERE dato BETWEEN ? AND ?");
 
-			$stmt->bind_param("s", $dato1, $dato2);
+			$stmt->bind_param("s", $dato1, $dato2));
 			$stmt->execute();
 
 			$data = $stmt->get_result()->fetch_all(MYSQLI_ASSOC)/*["number_Read"]*/;

@@ -63,7 +63,7 @@
 			$stmt->bind_param("i", intval($id));
 			$stmt->execute();
 
-			$data = $stmt->get_result()->fetch_array(MYSQLI_ASSOC)["number_read"];
+			$data = $stmt->get_result()->fetch_array(MYSQLI_ASSOC)["dato"];
 
 			$stmt->close();
 			$DB->conn->close();
