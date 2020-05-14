@@ -81,11 +81,6 @@
 		echo $billed->createBillede(null);
 	}, "post");
 
-	/*Route::add("/graf/grafFollows.php", function () {
-		// Kører koden i grafFollows.php
-		include_once "./graf/grafFollows.php";
-	}); */
-
 /************************************************/
 /*                  follow graf                 */ // ikke færdig
 /************************************************/
@@ -122,22 +117,30 @@
 
 //		$antal = $followship->countHowManyFollowsOnAMonth($date1, $date2);
 		$font = "/home/sebathefox/domains/ak.sebathefox.dk/public_html/php/graf/arial.ttf";
-		$antalRead = array_values($followship->getFollowsByWeek($d1, $d2));
-
+		//$antalRead = array_values($followship->getFollowsByWeek($d1, $d2));
+		$tal = 7;
+		$hej = new array();
+		$antalReadI = arrray_values($followship->getFollowsByWeek($d1));
+		for($i = 0; $i < $tal; $i++){
+			
+		}
+		
+		
 		for($i = 0; $i < count($antalRead); $i++){
-
 			imagefilledrectangle($img, $i * 40 + 25, 320, $i * 40 + 60, 320-(count($antalRead) * 10), $red);
 			imagerectangle($img, $i * 40 + 25, 320, $i * 40 + 60, 320-(count($antalRead) * 10), $black);
         }
 
-		//$antalDato =
-		//$datoRead = array_values()
-		/*for($i = 0; $i <= $antaldato; $i++){
-
-		}*/
+		$antalDato = $followship->countHowManyFollowsOnAMonth($d1, $d2);
+		$datoRead = array_values($followship->getDatoFromToDato($d1, $d2));
+		$x_akseTal = 35;
+		for($i = 0; $i <= $antalDato; $i++){
+			imagettftext($img, 10, 330, $x_akseTal, 334, $black, $font, $datoRead[$i]["dato"]);
+			$x_akseTal = $x_akseTal + 40;
+		}
 
 		// laver x-axis
-		imageline($img, 20, 320, 320, 320, $black); // x-akse 20 står på linje, 320 skal være det samme som nr. 4-tal, 320 længden på linjen, 320 skal være det samme som nr 2-tal. nr 2 og 4 tal er hvor linjen befinder sig
+		imageline($img, 20, 320, 320, 320, $black); // x-akse 20 står på linje, 320 skal være det samme som nr. 4-tal, 320 længden på linjen, 320 skal være det samme som nr 2-tal. nr 2 og 4 tal er hvor linjen befinder sig.
 
 		// laver y-axis
 		imageline($img, 20, 320, 20, 320-(8*35)-20, $black);
@@ -265,11 +268,6 @@
 		imagedestroy($img);
 
 	});
-
-	/*Route::add("/graf/grafRead.php", function () {
-		// Kører koden i grafRead.php
-//		include_once "./graf/grafRead.php";
-	});*/
 
 	// Starter Routing.
 	Route::run('/php');

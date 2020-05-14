@@ -21,12 +21,14 @@
 			$DB->conn->close();
 		}
 
-		public function getFollowsByWeek($date1, $date2){
+		public function getFollowsByWeek($date1/*, $date2*/){
 			$DB = new DB();
 
-			$stmt = $DB->conn->prepare("SELECT idFollows, dato FROM Follows WHERE dato BETWEEN ? AND ?");
+			//$stmt = $DB->conn->prepare("SELECT idFollows, dato FROM Follows WHERE dato BETWEEN ? AND ?");
+			$stmt = $DB->conn->prepare("SELECT idFollows FROM `Follows` WHERE dato = ?");
 
-			$stmt->bind_param("ss", $date1, $date2);
+			//$stmt->bind_param("ss", $date1, $date2);
+			$stmt->bind_param("s", $date1);
 			$stmt->execute();
 
             $data = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
@@ -36,34 +38,6 @@
 
 			return $data;
 		}
-
-		/*public function getFollowsByDay($date1){
-			$DB = new DB();
-
-			$stmt = $DB->conn->prepare("SELECT idFollows FROM Follows WHERE dato = ?");
-
-			$stmt->bind_param("s", $date1);
-			$stmt->execute();
-
-			$data = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
-
-			$stmt->close();
-			$DB->conn->close();
-		}
-
-		//public function countHowManyFollowsOnADay($date1){
-			$DB = new DB();
-
-			$stmt = $DB->conn->prepare("SELECT COUNT(idFollows) FROM Follows WHERE dato =  ?");
-
-			$stmt->bind_param("s", $date1);
-			$stmt->execute();
-
-			$data = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
-
-			$stmt->close();
-			$DB->conn->close();
-		}*/
 
 		public function countHowManyFollowsOnAMonth($date1, $date2){
 			$DB = new DB();
@@ -84,7 +58,7 @@
 
 			$stmt = $DB->conn->prepare("SELECT dato FROM Follows WHERE dato BETWEEN ? AND ?");
 
-			$stmt->bind_param("s", $dato1, $dato2);
+			$stmt->bind_param("ss", $date1, $date2);
 			$stmt->execute();
 
 			$data = $stmt->get_result()->fetch_all(MYSQLI_ASSOC)/*["number_Read"]*/;
@@ -93,14 +67,14 @@
 			$DB->conn->close();
 
 			return $data;
-		}
+		} 
 
 		public function countHowManyDatoFromTwoDato($date1, $date2){
 			$DB = new DB();
 
 			$stmt = $DB->conn->prepare("SELECT COUNT(dato) AS dato FROM Follows WHERE dato BETWEEN ? AND ?");
 
-			$stmt->bind_param("s", $dato1, $dato2);
+			$stmt->bind_param("ss", $date1, $date2);
 			$stmt->execute();
 
 			$data = $stmt->get_result()->fetch_all(MYSQLI_ASSOC)/*["number_Read"]*/;
