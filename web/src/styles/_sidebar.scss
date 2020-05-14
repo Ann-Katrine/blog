@@ -3,12 +3,35 @@
   top: 336px;
   overflow-x: hidden;
   right: 15px;
-  max-width: 25%;
+  left: 81%;
+  max-width: 100%;
   background-color: $sidebar-background-color;
   border: 2px solid $sidebar-border-color;
+
 }
 
 .posts-box-content {
   padding-left: 0.5%;
   padding-right: 0.5%;
+}
+
+.flex-row-container {
+  background: #aaa;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+.flex-row-container > .flex-row-item {
+  flex: 1 1 30%; /*grow | shrink | basis */
+  height: 100px;
+}
+
+.flex-row-item {
+  //background-color: #fff4e6;
+  //border: 1px solid #f76707;
+  max-width: 30%;
+  img {
+    max-width: 100%;
+  }
 }

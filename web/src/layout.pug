@@ -18,11 +18,27 @@ html
                     a(href="/follow.html") Følg Mig!
                 li
                     a(href="/create-post.html") Opret Indlæg
+                li
+                    a(href="/login.html") Login
 
 
         main(class="content")
-            block content
+            div(class="container")
+                div(class="small-box")
+                block main
 
+                div(class="less-big-box")
+                    div(class="sidebar")
+                        h3 Ann-Katrine
+                        div(class="divider")
+                        div(class="posts-box-content")
+                            p Lorem Ipsum Dolor Sit Amet AKA en kort beskrivelse om hvem du er, eller sådan noget dette er faktisk bare en fyldetekst...
+                            div(class="divider")
+                            div(class="flex-row-container")
+                                div(class="flex-row-item")
+                                    img(src="/images/facebook.png")
+                                div(class="flex-row-item") Knap2
+                                div(class="flex-row-item") KNAP3
             footer
                 div(class="content")
                 | TODO: FIX FOOTER!!!!!!!!!!!!!!!!!!!!!!
