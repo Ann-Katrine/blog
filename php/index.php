@@ -125,6 +125,10 @@
 			
 		}
 		
+		/* todo
+		kan mulig spilte dato op i år-måned-dag og få dag til at plus 6 gange og sætte år- måend- dag sammen igang for at få 7 dag
+		til over 28-29-30-31 kan man have en tjek ting så ser hvilken måned man er i og der efter for at videre hvilken den skal gå over og pluse og start for fra ken en ide*/
+		
 		
 		for($i = 0; $i < count($antalRead); $i++){
 			imagefilledrectangle($img, $i * 40 + 25, 320, $i * 40 + 60, 320-(count($antalRead) * 10), $red);
