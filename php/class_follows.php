@@ -22,6 +22,29 @@
 			$stmt->close();
 			$DB->conn->close();
 		}
+		
+		public function getFollowship($Brugernavn, $Password){
+			$DB = new DB();
+			
+			$stmt = $DB->conn->prepare("SELECT brugernavn, password from Follows WHERE brugernavn = ?");
+			
+			$stmt->bind_param("s", $Brugernavn);
+			$stmt->execute();
+			
+			$row = $stmt->get_result()->fetch_object();
+			
+			$stmt->close();
+			$DB->conn->close();
+			
+			$Hash = $row->password;
+			if(password_verify($Password, $Hash)){
+				echo "du er logget ind";
+			}
+			else{
+				echo "du har skrivet brugernavn eller kodeord forkert";
+			}
+			
+		}
 
 		public function getFollowsByWeek($date1/*, $date2*/){
 			$DB = new DB();
