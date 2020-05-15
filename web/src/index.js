@@ -149,3 +149,12 @@ function getUrlValue(key) {
 if(document.getElementById("post") != undefined) {
     getPostFromUrl();
 }
+
+
+function updateImg(date, target) {
+
+    let dte = document.getElementById(date);
+    let tgt = document.getElementById(target);
+
+    tgt.src = "https://ak.sebathefox.dk/php/post/follows/" + dte.value + "/2020-05-15";
+}

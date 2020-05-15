@@ -1,0 +1,27 @@
+doctype html
+html
+    head
+        meta(charset="UTF-8")
+        title AK's Blog
+        meta(name="viewport" content="width=device-width, initial-scale=1.0")
+        link(rel="shortcut icon", type="image/png", href="/images/icon.png")
+        link(doctype="text/css", rel="stylesheet", href="styles.css")
+    body
+        header(class="banner-top")
+            img(src="/images/banner.jpg", alt="Header Banner")
+
+        nav(class="navbar")
+            ul
+                li
+                    a(href="/") Home
+                li
+                    a(href="/follow.html") Følg Mig!
+                li
+                    a(href="/create-post.html") Opret Indlæg
+                li
+                    a(href="/login.html") Login
+
+
+        main(class="content")
+            block main
+        script(src="main.js")

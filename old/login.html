@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ak's Blog</title>
+    <link href="../css/main.css" type="text/css" rel="stylesheet">
+    <link rel="shortcut icon" type="image/png" href="/images/icon.png">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+<body>
+
+<header class="banner-top">
+    <img src="../images/banner.jpg" alt="Header banner">
+</header>
+
+<nav class="navbar">
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="follow.html">Følg Mig!</a>
+        <li>
+        <li><a href="create-post.html">Opret nyt indslag</a>
+
+    </ul>
+
+</nav>
+
+<main class="content">
+    <div class="container no-wrap">
+        <div class="less-big-box">
+        </div>
+        <div class="big-box">
+            <form action="php/login">
+                <div class="row">
+                    <div class="col-25">
+                        <label for="username">Brugernavn</label>
+                    </div>
+                    <div class="col-75">
+                        <input id="username" type="text" name="username" required>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-25">
+                        <label for="password">Password</label>
+                    </div>
+                    <div class="col-75">
+                        <input id="password" type="password" name="password" required>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-25">
+                        <label for="submit">Login</label>
+                    </div>
+                    <div class="col-75">
+                        <input id="submit" type="submit" name="submit" value="Login">
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="less-big-box">
+
+        </div>
+    </div>
+    <footer>
+        <div class="content">
+            TODO: FIX FOOTER!!!!!!!!!!!!!!!
+        </div>
+    </footer>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+</body>
+</html>

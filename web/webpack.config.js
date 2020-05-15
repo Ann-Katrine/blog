@@ -94,8 +94,8 @@ module.exports = {
         new HtmlWebpackPlugin({
             inject: false,
             // hash: false,
-            template: './' + src_Path + '/post.pug',
-            filename: 'post.html'
+            template: './' + src_Path + '/statistics.pug',
+            filename: 'statistics.html'
         }),
     ]
 };

@@ -118,11 +118,15 @@
 //		$antal = $followship->countHowManyFollowsOnAMonth($date1, $date2);
 		$font = "/home/sebathefox/domains/ak.sebathefox.dk/public_html/php/graf/arial.ttf";
 		//$antalRead = array_values($followship->getFollowsByWeek($d1, $d2));
-		$tal = 7;
+		$tal = 3;
 		$hej = [];
+		$x_akseTal = 75;
 		$antalRead = array_values($followship->getFollowsByWeek($d1));
+		$string = $antalRead[0];
+		$hej = explode("-", $string);
 		for($i = 0; $i < $tal; $i++){
-
+			imagettftext($img, 10, 330, $x_akseTal, 334, $black, $font, $hej[$i]);
+			$x_akseTal =+40;
 		}
 
 
@@ -136,7 +140,7 @@
 		$x_akseTal = 35;
 		for($i = 0; $i <= $antalDato; $i++){
 			imagettftext($img, 10, 330, $x_akseTal, 334, $black, $font, $datoRead[$i]["dato"]);
-			$x_akseTal = $x_akseTal + 40;
+			$x_akseTal = $x_akseTal + 40; 
 		}
 
 		// laver x-axis
