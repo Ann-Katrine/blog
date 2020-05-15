@@ -4,6 +4,9 @@
 	include("class_billeder.php");
 	include('Route.php');
 
+include_once("./class_follows.php");
+
+
 	// Add base route (startpage)
 	Route::add('/', function(){
 		echo 'welcome :-)';
@@ -41,6 +44,16 @@
 	}, "get");
 
 /************************************************/
+/*              henter et indlæg                */
+/************************************************/
+	Route::add('/post/onePost/([0-9]*)', function($id){
+		$blogPosts = new blogposts();
+
+		$result = $blogPosts->getOnePostById($id);
+		echo json_encode($result);
+	}, "get");
+
+/************************************************/
 /*           Opretter et nyt indlæg.            */
 /************************************************/
 	Route::add('/posts', function(){
@@ -69,16 +82,6 @@
 	}, "post");
 
 /************************************************/
-/*              henter et indlæg                */
-/************************************************/
-	Route::add('/post/onePost/([0-9]*)', function($id){
-		$blogPosts = new blogposts();
-		
-		$result = $blogPosts->getOnePostById($id);
-		echo json_encode($result);
-	}, "get");
-
-/************************************************/
 /*      Tilføjer et nyt billede til serveren.   */
 /************************************************/
 	Route::add('/billed', function(){
@@ -92,10 +95,33 @@
 	}, "post");
 
 /************************************************/
+/*           opretter ny followship            */
+/************************************************/
+	Route::add('/followship', function(){
+		// Henter JSON fra en "fil" der ikke eksisterer, men får det hele til at cirker?!
+		$data = json_decode(file_get_contents("php://input"), true);
+
+		// Formaterer centent som JSON
+		$Name = $data["name"];
+		$Mail = $data["email"];
+		$Brugernavn = $data["username"];
+		$Password = $data["password"];
+
+
+		// Tjekker om variablerne er tomme
+		if(!empty($Name) && !empty($Mail) && !empty($Brugernavn) && !empty($Password)){
+			$followship = new followship();
+
+			$followship->createFollowship($Name, $Mail, $Brugernavn, $Password, 2);
+			echo "oprettet";
+		}
+	}, "post");
+
+/************************************************/
 /*                  follow graf                 */ // ikke færdig
 /************************************************/
 	Route::add('/post/follows/([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))', function($date1){
-		include_once("./class_follows.php");
+
 
 		$dates = explode("/", $date1);
 

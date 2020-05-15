@@ -159,6 +159,33 @@ function updateImg(date, target) {
     tgt.src = "https://ak.sebathefox.dk/php/post/follows/" + dte.value;
 }
 
-document.getElementById("search-date").onclick = function () {
-    updateImg('date', 'stat-follows');
-};
+if(document.getElementById("search-date") != undefined) {
+
+    document.getElementById("search-date").onclick = function () {
+        updateImg('date', 'stat-follows');
+    };
+}
+
+if(document.getElementById("create-follow")) {
+
+    document.getElementById("create-follow").onclick = function () {
+        let name = document.getElementById("name").value;
+        let email = document.getElementById("email").value;
+        let username = document.getElementById("username").value;
+        let password = document.getElementById("password").value;
+
+        axios.post("/php/followship", {
+            name: name,
+            email: email,
+            username: username,
+            password: password
+        })
+            .then(function (response) {
+                console.log(response);
+            })
+            .catch(function (error) {
+                console.log(error)
+            });
+
+    };
+}
