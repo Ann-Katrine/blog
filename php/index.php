@@ -41,6 +41,16 @@
 	}, "get");
 
 /************************************************/
+/*              henter et indlæg                */
+/************************************************/
+	Route::add('/post/onePost/([0-9]*)', function($id){
+		$blogPosts = new blogposts();
+		
+		$result = $blogPosts->getOnePostById($id);
+		echo json_encode($result);
+	}, "get");
+
+/************************************************/
 /*           Opretter et nyt indlæg.            */
 /************************************************/
 	Route::add('/posts', function(){
@@ -69,16 +79,6 @@
 	}, "post");
 
 /************************************************/
-/*              henter et indlæg                */
-/************************************************/
-	Route::add('/post/onePost/([0-9]*)', function($id){
-		$blogPosts = new blogposts();
-		
-		$result = $blogPosts->getOnePostById($id);
-		echo json_encode($result);
-	}, "get");
-
-/************************************************/
 /*      Tilføjer et nyt billede til serveren.   */
 /************************************************/
 	Route::add('/billed', function(){
@@ -89,6 +89,28 @@
 		// Opret.
 		// Send null fordi vi får dataen fra billedet.
 		echo $billed->createBillede(null);
+	}, "post");
+
+/************************************************/
+/*           opretter ny followship            */
+/************************************************/
+	Route::add('/followship', function(){
+		// Henter JSON fra en "fil" der ikke eksisterer, men får det hele til at cirker?!
+		$data = json_decode(file_get_contents("pph://input"), true);
+		
+		// Formaterer centent som JSON
+		$Name = json_encode($data["content"]);
+		$Mail = json_encode($data["content"]);
+		$Brugernavn = json_encode($data["content"]);
+		$Password = json_encode($data["content"]);
+		
+		// Tjekker om variablerne er tomme
+		if(!empty($Name), !empty($Mail), !empty($Brugernavn), !empty($Password)){
+			$followship = new followship();
+			
+			$followship->createFollowship($Name, $Mail, $Brugernavn, $Password, 2);
+			echo "oprettet";
+		}
 	}, "post");
 
 /************************************************/
