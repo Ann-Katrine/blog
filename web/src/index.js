@@ -129,7 +129,7 @@ if(document.getElementById("posts") != undefined) {
 function getPostFromUrl() {
     let postId = getUrlValue("post");
 
-    axios.get('/php/post/read/' + postId)
+    axios.get('/php/post/onePost/' + postId)
         .then(function (response) {
             let data = response.data;
 
@@ -156,5 +156,9 @@ function updateImg(date, target) {
     let dte = document.getElementById(date);
     let tgt = document.getElementById(target);
 
-    tgt.src = "https://ak.sebathefox.dk/php/post/follows/" + dte.value + "/2020-05-15";
+    tgt.src = "https://ak.sebathefox.dk/php/post/follows/" + dte.value;
 }
+
+document.getElementById("search-date").onclick = function () {
+    updateImg('date', 'stat-follows');
+};

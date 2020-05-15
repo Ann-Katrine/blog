@@ -6,6 +6,8 @@
  */
 export function createPost(parent, postObject) {
 
+    // console.log(postObject);
+
     // Creates the main post element.
     let post = document.createElement("div");
     post.classList.add("post");
@@ -45,6 +47,13 @@ export function createPost(parent, postObject) {
     post.appendChild(header);
     post.appendChild(tags);
     post.appendChild(paragraph);
+
+    let more = document.createElement("a");
+
+    more.href = "https://ak.sebathefox.dk/post.html?post=" + postObject.idBlogPost;
+    more.text = "Læs Mere";
+
+    post.appendChild(more);
 
     parent.appendChild(post);
 }
