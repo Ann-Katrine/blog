@@ -95,6 +95,24 @@ include_once("./class_follows.php");
 	}, "post");
 
 /************************************************/
+/*                     login                    */
+/************************************************/
+	Route::add('/login', function(){
+		//$data = json_decode(file_get_contents("php://input"), true);
+		/*var_dump($data);
+		exit(0);*/
+		$Brugernavn = $_POST["brugernavn"];
+		$Password = $_POST["password"];
+		
+		if(!empty($Brugernavn) && !empty($Password)){
+			$followship = new followship();
+			
+			$followship->getFollowship($Brugernavn, $Password);
+			echo "virker";
+		}
+	}, "post");
+
+/************************************************/
 /*           opretter ny followship            */
 /************************************************/
 	Route::add('/followship', function(){
