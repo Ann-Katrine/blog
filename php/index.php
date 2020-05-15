@@ -115,33 +115,44 @@
 
 		$followship = new followship();
 
-//		$antal = $followship->countHowManyFollowsOnAMonth($date1, $date2);
+		//tekst og data til graf
 		$font = "/home/sebathefox/domains/ak.sebathefox.dk/public_html/php/graf/arial.ttf";
-		//$antalRead = array_values($followship->getFollowsByWeek($d1, $d2));
-		$tal = 3;
-		$hej = [];
-		$x_akseTal = 75;
-		$antalRead = array_values($followship->getFollowsByWeek($d1));
-		$string = $antalRead[0];
+		$tal = 7; // længden af arrayet
+		$hej = []; // til at spilte datoen op man vælger
+		$day = []; // bruges sammen med arrayet hej til at tælle dagene op
+		$zero = ["0", "-"]; // til at få det rigtige day og dato
+		$x_akseTal = 35;
+		$antalReadI = array_values($followship->getFollowsByWeek($d1));
+		$string = $antalReadI[0]["dato"];
 		$hej = explode("-", $string);
+
+		/*var_dump($hej);
+		exist(0);*/
+
 		for($i = 0; $i < $tal; $i++){
-			imagettftext($img, 10, 330, $x_akseTal, 334, $black, $font, $hej[$i]);
-			$x_akseTal =+40;
+			$day[$i] = $hej[2]+$i;	// gør at dagene tæller op
+			$day[$i] = $zero[0].$day[$i]; // punktum gør at de kan sættes ved siden af hinaden og der kommer til at stå 0 foran
+			$day[$i] = $hej[0].$zero[1].$hej[1].$zero[1].$day[$i]; // gør at vi får en dato med år måned og dag sat sammen igen
+			imagettftext($img, 10, 330, $x_akseTal, 334, $black, $font, $day[$i]); // får det skriv ud på skærmen
+			$x_akseTal =$x_akseTal+40; // at tekst rykker hen
+			$antalRead = array_values($followship->getFollowsByWeek($day[$i]));
+			imagefilledrectangle($img, $i * 40 + 25, 320, $i * 40 + 60, 320-(count($antalRead) * 10), $red);
+			imagerectangle($img, $i * 40 + 25, 320, $i * 40 + 60, 320-(count($antalRead) * 10), $black);
 		}
 
 
-		for($i = 0; $i < count($antalRead); $i++){
+		/*for($i = 0; $i < count($antalRead); $i++){
 			imagefilledrectangle($img, $i * 40 + 25, 320, $i * 40 + 60, 320-(count($antalRead) * 10), $red);
 			imagerectangle($img, $i * 40 + 25, 320, $i * 40 + 60, 320-(count($antalRead) * 10), $black);
-        }
+        }*/
 
-		$antalDato = $followship->countHowManyFollowsOnAMonth($d1, $d2);
+		/*$antalDato = $followship->countHowManyFollowsOnAMonth($d1, $d2);
 		$datoRead = array_values($followship->getDatoFromToDato($d1, $d2));
 		$x_akseTal = 35;
 		for($i = 0; $i <= $antalDato; $i++){
 			imagettftext($img, 10, 330, $x_akseTal, 334, $black, $font, $datoRead[$i]["dato"]);
-			$x_akseTal = $x_akseTal + 40; 
-		}
+			$x_akseTal = $x_akseTal + 40;
+		}*/
 
 		// laver x-axis
 		imageline($img, 20, 320, 320, 320, $black); // x-akse 20 står på linje, 320 skal være det samme som nr. 4-tal, 320 længden på linjen, 320 skal være det samme som nr 2-tal. nr 2 og 4 tal er hvor linjen befinder sig.
