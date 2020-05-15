@@ -69,6 +69,16 @@
 	}, "post");
 
 /************************************************/
+/*              henter et indlæg                */
+/************************************************/
+	Route::add('/post/onePost/([0-9]*)', function($id){
+		$blogPosts = new blogposts();
+		
+		$result = $blogPosts->getOnePostById($id);
+		echo json_encode($result);
+	}, "get");
+
+/************************************************/
 /*      Tilføjer et nyt billede til serveren.   */
 /************************************************/
 	Route::add('/billed', function(){
@@ -84,7 +94,7 @@
 /************************************************/
 /*                  follow graf                 */ // ikke færdig
 /************************************************/
-	Route::add('/post/follows/([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))', function($date1, $date2){
+	Route::add('/post/follows/([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))', function($date1){
 		include_once("./class_follows.php");
 
 		$dates = explode("/", $date1);
