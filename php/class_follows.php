@@ -8,8 +8,10 @@
 
 			$stmt = $DB->conn->prepare("INSERT INTO Follows (name, mail, brugernavn, password, Title_idTitle) VALUES (?, ?, ? ,? ,?)");
 
-			$stmt->bind_param("sssss", $name, $mail, $brugenavn, $password, $Title_idTitle);
-
+			$Hash = password_hash($Password, PASSWORD_DEFAULT); 
+			
+			$stmt->bind_param("sssss", $name, $mail, $brugenavn, $Hash, $Title_idTitle);
+  
 			$name = $Name;
 			$mail = $Mail;
 //			$brugernavn = $Brugrnavn;
