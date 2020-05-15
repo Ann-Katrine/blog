@@ -67,7 +67,7 @@
 			$DB->conn->close();
 
 			return $data;
-		} 
+		}
 
 		public function countHowManyDatoFromTwoDato($date1, $date2){
 			$DB = new DB();
