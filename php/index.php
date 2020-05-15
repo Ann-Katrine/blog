@@ -119,8 +119,8 @@
 		$font = "/home/sebathefox/domains/ak.sebathefox.dk/public_html/php/graf/arial.ttf";
 		//$antalRead = array_values($followship->getFollowsByWeek($d1, $d2));
 		$tal = 7;
-		$hej = new array();
-		$antalReadI = arrray_values($followship->getFollowsByWeek($d1));
+		$hej = [];
+		$antalRead = array_values($followship->getFollowsByWeek($d1));
 		for($i = 0; $i < $tal; $i++){
 
 		}
