@@ -25,7 +25,7 @@
 			$DB = new DB();
 
 			//$stmt = $DB->conn->prepare("SELECT idFollows, dato FROM Follows WHERE dato BETWEEN ? AND ?");
-			$stmt = $DB->conn->prepare("SELECT idFollows FROM `Follows` WHERE dato = ?");
+			$stmt = $DB->conn->prepare("SELECT idFollows, dato FROM `Follows` WHERE dato = ?");
 
 			//$stmt->bind_param("ss", $date1, $date2);
 			$stmt->bind_param("s", $date1);
