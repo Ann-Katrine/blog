@@ -25,10 +25,12 @@
 			$stmt ->bind_param("i", $id);
 			$stmt->execute();
 			
-			$data = $stmt->get_result();
+			$data = $stmt->get_result()->fetch_object();
 			
 			$stmt->close();
 			$DB->conn->close();
+			
+			return $data;
 		}
 
 		public function createPosts($tekst, $sted, $title, $dato){
